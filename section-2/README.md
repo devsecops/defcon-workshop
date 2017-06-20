@@ -22,7 +22,7 @@
 * `kubectl apply -f remote-deployment.yaml` - Deploys the remote K8S cluster on GCP. Similar commands as above apply here as well
 * `kubectl delete deployments --namespace=remote-server --all` - Deletes the remote deployment in the namespace
 * `kubectl delete namespace remote-server` - Deletes the namespace
-
+* `gcloud alpha container clusters delete remote-cluster` - Delete the remote K8S cluster
 
 References:
 * https://kubernetes.io/docs/concepts/workloads/controllers/deployment/
