@@ -1,0 +1,15 @@
+apiVersion: apps/v1beta1 # for versions before 1.6.0 use extensions/v1beta1
+kind: Deployment
+metadata:
+  name: nmap-deployment
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: nmap
+    spec:
+      containers:
+      - name: nmap
+        image: abhartiya/tools_nmap
+        args: ["-Pn", "-p 1-1000", "google.com"]
