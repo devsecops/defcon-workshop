@@ -42,6 +42,7 @@ version:string
 * Navigate to `IAM & Admin` -> `Service Accounts`. Create a key for the default Compute Engine Service Account and download the JSON key
 * `kubectl create secret generic googlesecret --from-file=$(CREDS_FILEPATH)` - Create a secret with the value of the secret being the JSON credentials file downloaded above. We need this because the containers on the cluster need to authenticate to our K8S cluster to be able to create anything. We don't do this locally because our gcloud environment, by default, is already configured when we first set it up but we need it when running on a K8S cluster
 * `kubectl get secrets` - Verify the secret was created
+* Make sure the environment values in the `nmap-bq-deployment.yaml` deployment file are accurate
 * `kubectl apply -f ../deployments/nmap-bq-deployment.yaml`
 
 References:
