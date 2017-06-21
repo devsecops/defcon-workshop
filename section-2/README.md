@@ -11,6 +11,8 @@
 * `kubectl get pods --namespace=local-server` - Retrieve all the pods in the namespace
 * `kubectl scale deployment nginx-deployment --namespace=local-server --replicas 10` - Scales the deployment from 3 to 10
 * `kubectl autoscale deployment nginx-deployment --namespace=local-server --min=10 --max=15 --cpu-percent=80` - Autoscale
+* `kubectl delete deployments --namespace=local-server --all` - Deletes the local deployments in the namespace
+* `kubectl delete namespace local-server` - Deletes the namespace
 
 
 ## Deploying a K8S cluster remotely on GCP
@@ -20,7 +22,7 @@
 * `kubectl get nodes` - Verify you are talking to the remote K8S cluster
 * `kubectl proxy` - Starts a proxy locally to view the remote K8S dashboard. Same as typing `minikube dashboard` in the above usecase
 * `kubectl apply -f remote-deployment.yaml` - Deploys the remote K8S cluster on GCP. Similar commands as above apply here as well
-* `kubectl delete deployments --namespace=remote-server --all` - Deletes the remote deployment in the namespace
+* `kubectl delete deployments --namespace=remote-server --all` - Deletes the remote deployments in the namespace
 * `kubectl delete namespace remote-server` - Deletes the namespace
 * `gcloud alpha container clusters delete remote-cluster` - Delete the remote K8S cluster
 

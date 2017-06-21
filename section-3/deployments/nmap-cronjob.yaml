@@ -1,0 +1,55 @@
+apiVersion: batch/v2alpha1
+kind: CronJob
+metadata:
+  name: nmap-cron
+  labels:
+    app: cronjob-worker
+    component: cronjob
+spec:
+  schedule: "*/3 * * * *"
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+          - name: nmaptobq-container
+            image: abhartiya/utils_nmaptobq:v1
+            imagePullPolicy: IfNotPresent
+            env:
+            - name: PROJECT_ID
+              value: "defcon-workshop"
+            - name: DATASET_NAME
+              value: "nmapds"
+            - name: TABLE_NAME
+              value: "nmap"
+            - name: GOOGLE_APPLICATION_CREDENTIALS
+              value: "/secretstore/defcon-workshop-b071569e3eec.json"
+            args:
+            - /tmp/results/nmap_google.com
+            volumeMounts:
+            - name: results
+              mountPath: /tmp/results
+            - name: secretstore
+              mountPath: /secretstore
+          initContainers:
+          - name: nmap-init-container
+            image: abhartiya/tools_nmap
+            imagePullPolicy: IfNotPresent
+            args:
+            - -Pn
+            - -p
+            - 1-1000
+            - -o
+            - /tmp/results/nmap_google.com
+            - google.com
+            volumeMounts:
+            - name: results
+              mountPath: /tmp/results
+          restartPolicy: OnFailure
+          volumes:
+          - name: results
+            emptyDir: {}
+          - name: secretstore
+            secret:
+              secretName: googlesecret
+          restartPolicy: OnFailure
