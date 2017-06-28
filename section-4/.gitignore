@@ -1,3 +1,4 @@
 env/
 .env
-*.nmap
+*.json
+*.csv
