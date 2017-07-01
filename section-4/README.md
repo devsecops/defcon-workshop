@@ -8,19 +8,26 @@
 
 ## Destroying the environment
 
-## Introducing and Setting up Kubebot
+## Introducing Target, Attack Surface and Automated Testing Methodology
+* Domain:
+    * Domain points to an Apache Tomcat server.
+    * Domain has a github org with members.
+* We will scan all the repositories of this org and all the repositories of the org's members using `repo-supervisor`. Results will be stored in a Google BigQuery table.
+* We will then run `wfuzz` to do a focussed bruteforcing for Apache Tomcat endpoints on that domain. Results will be stored in a Google BigQuery table.
+* We will then use the secrets obtained from `repo-supervisor` and try to bruteforce the basic authentication mechanism of the Apache Tomcat endpoints obtained from `wfuzz`.
+* If there is a match, we will get back results in Slack via an incoming webhook.
+* Demo of doing all this automatically.
 
-## Introducing Target and Attack Surface
+### Running tools locally
+* [Running repo-supervisor and wfuzz locally and converting the results to store in BigQuery](data-converter/README.md)
+* [Running wfuzz basic authentication bruteforcer combining the data from both the tools](wfuzz-basicauth-bruteforcer/README.md)
 
-## Automation of multiple tools
-* Show local data conversion for both wfuzz and reposupervisor and storing in bq
-* Show local bruteforcer
+### Running tools on a K8S cluster
 * Show k8s deployment of both wfuzz and reposupervisor pods simultaneously manually using yaml files.
 * Once they finish, show k8s deployment of bruteforcer using yaml file
 * If more time, introduce Kubebot and show how it can all be automated - using slack to start the workflow, using channels/queues to communicate b/w the tools and bruteforcer & sending results back to slack
 
-## Kubebot experience
-### Sending a request from Kubebot for a target company from mobile
+### Sending a request from Kubebot for a target company from mobile using Kubebot
 * API server receives the request
 * API server drops a message in the queue to start repo-supervisor against that company’s github and waits for it to finish
 * API server drops a message in the queue to start wfuzz against that company’s main domain and waits for it to finish
