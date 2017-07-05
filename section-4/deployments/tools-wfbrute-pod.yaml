@@ -1,0 +1,37 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: tools-wfbrute-pod
+  labels:
+    app: tools-brute
+spec:
+  containers:
+  - name: wfbasicauthbrute-container
+    image: abhartiya/utils_wfuzzbasicauthbrute:v1
+    imagePullPolicy: IfNotPresent
+    env:
+    - name: PROJECT_ID
+      value: ""
+    - name: RS_DATASET_NAME
+      value: "reposupervisords"
+    - name: RS_TABLE_NAME
+      value: "reposupervisor_test"
+    - name: WF_DATASET_NAME
+      value: "wfuzzds"
+    - name: WF_TABLE_NAME
+      value: "wfuzz_tomcat_test"
+    - name: GOOGLE_APPLICATION_CREDENTIALS
+      value: "/secretstore/defcon-workshop-b071569e3eec.json"
+    args:
+    - -target
+    - ""
+    - -slackHook
+    - ""
+    volumeMounts:
+    - name: secretstore
+      mountPath: /secretstore
+  volumes:
+  - name: secretstore
+    secret:
+      secretName: googlesecret
+  restartPolicy: OnFailure

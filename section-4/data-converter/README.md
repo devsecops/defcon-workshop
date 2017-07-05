@@ -18,9 +18,9 @@ Request:string
 Success:string
 ```
 
-* Run Repo Supervisor by typing `docker run -it abhartiya/tools_gitallsecrets:v3 -token <> -orgname <> -toolName repo-supervisor`. Copy the `/data/results.txt` from the container to `results.json`.
+* Run Repo Supervisor by typing `docker run -it abhartiya/tools_gitallsecrets:v3 -token <> -org <> -toolName repo-supervisor`. Copy the `/data/results.txt` from the container to `results.json`.
 
-* Run WFUZZ by typing `docker run -it abhartiya/tools_wfuzz -w /data/SecLists/Discovery/Web_Content/tomcat.txt --hc 404,429,400 -o csv <URL> /data/out.csv`. Copy the `/data/out.csv` from the container to `out.csv`.
+* Run WFUZZ by typing `docker run -it abhartiya/tools_wfuzz -w /data/SecLists/Discovery/Web_Content/tomcat.txt --hc 404,429,400 -o csv <URL>/FUZZ /data/out.csv`. Copy the `/data/out.csv` from the container to `out.csv`.
 
 * Complete the `.env.sample` file in the `data-converter` folder with the appropriate values and rename it to `.env`.
 

@@ -1,0 +1,107 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: tools-bq-pod-rs
+  labels:
+    app: tools-bq
+spec:
+  containers:
+  - name: reposupervisortobq-container
+    image: abhartiya/utils_converttobq:v1
+    imagePullPolicy: IfNotPresent
+    env:
+    - name: PROJECT_ID
+      value: "defcon-workshop"
+    - name: RS_DATASET_NAME
+      value: "reposupervisords"
+    - name: RS_TABLE_NAME
+      value: "reposupervisor_test"
+    - name: GOOGLE_APPLICATION_CREDENTIALS
+      value: "/secretstore/defcon-workshop-b071569e3eec.json"
+    args:
+    - -toolName
+    - repo-supervisor
+    - -filePath
+    - /tmp/results/results.json
+    volumeMounts:
+    - name: results
+      mountPath: /tmp/results
+    - name: secretstore
+      mountPath: /secretstore
+  initContainers:
+    - name: reposupervisor-init-container
+      image: abhartiya/tools_gitallsecrets:v3
+      imagePullPolicy: IfNotPresent
+      args:
+      - -token
+      - <>
+      - -org
+      - secretorg123
+      - -toolName
+      - repo-supervisor
+      - -output
+      - /tmp/results/results.json
+      volumeMounts:
+      - name: results
+        mountPath: /tmp/results
+  volumes:
+  - name: results
+    emptyDir: {}
+  - name: secretstore
+    secret:
+      secretName: googlesecret
+  restartPolicy: OnFailure
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: tools-bq-pod-wf
+  labels:
+    app: tools-bq
+spec:
+  containers:
+  - name: wfuzztobq-container
+    image: abhartiya/utils_converttobq:v1
+    imagePullPolicy: IfNotPresent
+    env:
+    - name: PROJECT_ID
+      value: "defcon-workshop"
+    - name: WF_DATASET_NAME
+      value: "wfuzzds"
+    - name: WF_TABLE_NAME
+      value: "wfuzz_tomcat_test"
+    - name: GOOGLE_APPLICATION_CREDENTIALS
+      value: "/secretstore/defcon-workshop-b071569e3eec.json"
+    args:
+    - -toolName
+    - wfuzz
+    - -filePath
+    - /tmp/results/results.csv
+    volumeMounts:
+    - name: results
+      mountPath: /tmp/results
+    - name: secretstore
+      mountPath: /secretstore
+  initContainers:
+    - name: wfuzz-init-container
+      image: abhartiya/tools_wfuzz
+      imagePullPolicy: IfNotPresent
+      args:
+      - -w
+      - /data/SecLists/Discovery/Web_Content/tomcat.txt
+      - --hc
+      - 404,429,400
+      - -o
+      - csv
+      - http://<>/FUZZ/
+      - /tmp/results/results.csv
+      volumeMounts:
+      - name: results
+        mountPath: /tmp/results
+  volumes:
+  - name: results
+    emptyDir: {}
+  - name: secretstore
+    secret:
+      secretName: googlesecret
+  restartPolicy: OnFailure
