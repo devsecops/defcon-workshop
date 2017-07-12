@@ -2,11 +2,25 @@
 
 ## Stand up vulnerable and non-vulnerable JBOSS servers
 
+
 ## Stand up Attack Host with exploit tools
+* From the `attackhost` directory, type
+    * docker build -t us.gcr.io/defcon-workshop/attackhost .
+    * gcloud docker -- push us.gcr.io/defcon-workshop/attackhost
+* Navigate to Google Container Registry and verify the image exists.
+* Start the attackhost deployment by typing - `kubectl apply -f attack-host.yaml`.
+
 
 ## Using Attack Host to exploit
+* SSH into the attackhost container by typing - `kubectl exec -it <pod-name> bash`.
+* Run `jexboss` by typing - `python jexboss.py -u <URL>` for both the vulnerable and non-vulnerable JBOSS servers.
+* Notice the different output and the ease of standing up sandboxed environments for security testing.
+
 
 ## Destroying the environment
+* Delete all the deployments by typing - `kubectl delete deployments --all`
+* Delete all the pods by typing - `kubectl delete pods --all`
+
 
 ## Introducing Target, Attack Surface and Automated Testing Methodology
 * Domain:

@@ -1,0 +1,16 @@
+apiVersion: apps/v1beta1 # for versions before 1.6.0 use extensions/v1beta1
+kind: Deployment
+metadata:
+  name: attackhost-deployment
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: attackhost
+    spec:
+      containers:
+      - name: attackhost
+        image: us.gcr.io/defcon-workshop/attackhost
+        ports:
+        - containerPort: 80
