@@ -24,7 +24,7 @@
 
 ### Running on a K8S cluster
 Running the tools repo-supervisor and wfuzz
-* Delete and re-create the empty wfuzz and repo-supervisor tables.
+* `go run scripts/main.go -project <PROJECTID> -gac <GACCREDS> -wfdataset wfuzzds -wftable wfuzz_tomcat_test -rsdataset reposupervisords -rstable reposupervisor_test` - This will re-create the dataset and tables.
 * `kubectl create secret generic googlesecret --from-file=$(CREDS_FILEPATH)` - Create a secret with the value of the secret being the JSON credentials file downloaded above. We need this because the containers on the cluster need to authenticate to our K8S cluster to be able to create anything. We don't do this locally because our gcloud environment, by default, is already configured when we first set it up but we need it when running on a K8S cluster
 * `kubectl get secrets` - Verify the secret was created
 * Make sure the environment values in the `deployments/tools-bq-pod.yaml` deployment file are accurate
@@ -36,7 +36,7 @@ Running the wfuzz basic authN bruteforcer
 
 ### Cleanup
 * `kubectl delete pods --all`
-* Delete the BQ tables
+* Delete the BQ datasets and tables
 
 -------------
 ### Sending a request from Kubebot for a target company

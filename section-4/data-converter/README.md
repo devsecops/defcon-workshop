@@ -1,22 +1,25 @@
 # Convert data into BigQuery ingest-able format using a Generic Data Converter
 
 ## Running Locally
-* Create a BigQuery dataset `reposupervisords` and an empty table `reposupervisor_<target>` in Google BigQuery from the GCP UI to store the processed repo-supervisor results with the following schema (all nullable):
-```
-File:string
-Secret:string
-```
+* `go run scripts/main.go -project <PROJECTID> -gac <GACCREDS> -wfdataset wfuzzds -wftable wfuzz_tomcat_test -rsdataset reposupervisords -rstable reposupervisor_test`. This command will:
+    * Create a BiqQUery dataset `wfuzzds` and an empty table `wfuzz_tomcat_test` in Google BigQuery to store the processed wfuzz results with the following schema (all nullable):
 
-* Similarly for wfuzz, create the dataset `wfuzzds` and an empty table `wfuzz_<appServerTech>_<target>` in Google BigQuery from the GCP UI to store the processed wfuzz results with the following schema (all nullable):
-```
-ID:string
-Response:string
-Lines:string
-Word:string
-Chars:string
-Request:string
-Success:string
-```
+    ```
+    ID:string
+    Response:string
+    Lines:string
+    Word:string
+    Chars:string
+    Request:string
+    Success:string
+    ```
+
+    * Create a BigQuery dataset `reposupervisords` and an empty table `reposupervisor_test` in Google BigQuery to store the processed repo-supervisor results with the following schema (all nullable):
+
+    ```
+    File:string
+    Secret:string
+    ```
 
 * Run Repo Supervisor by typing `docker run -it abhartiya/tools_gitallsecrets:v3 -token <> -org <> -toolName repo-supervisor`. Copy the `/data/results.txt` from the container to `results.json`.
 
