@@ -2,9 +2,15 @@
 
 ## Kubernetes aka K8s review
 
+### K8s Core
 ![k8s core](imgs/k8s.png)
 
+Reference: [link](https://blog.heptio.com/core-kubernetes-jazz-improv-over-orchestration-a7903ea92ca)
+
+### K8s Overview
 ![k8s overview](imgs/k8s4.png)
+
+Reference: [link](https://www.redhat.com/en/containers/what-is-kubernetes)
 
 ## Deploying a K8S cluster locally on minikube
 
