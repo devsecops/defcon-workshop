@@ -1,5 +1,11 @@
 # Section-2
 
+## Kubernetes aka K8s review
+
+![k8s core](imgs/k8s.png)
+
+![k8s overview](imgs/k8s4.png)
+
 ## Deploying a K8S cluster locally on minikube
 
 * `minikube start`
