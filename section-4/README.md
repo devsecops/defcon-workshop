@@ -11,7 +11,7 @@
 * Getting the image ready to push to GCP
     * Once the image is pulled down you're going to want to tag the image to get it ready for GCP.  Type `docker images` to get a list of your local images.  Copy the Image ID of the tutum/jboss images with the tag of *latest* and type the following command `docker tag <Image ID> us.gcr.io/<project name>/jboss-latest` replacing the image id and project name with that of your own.  Now if you type `docker images` you should see your newly tagged images ready for GCP
     * Repeat the step above for the as6 version labeling it `jboss-vulnerable`
-    * Now we have to upload the images to the container registry in GCP. Type the following command to upload the newly tagged image to GCP: `gcloud docker -- push us.gcr.io/<project name>/vuln-jboss:vuln-as6` and `gcloud docker -- push us.gcr.io/<project name>/jboss-latest:latest` everything after the colon
+    * Now we have to upload the images to the container registry in GCP. Type the following command to upload the newly tagged image to GCP: `gcloud docker -- push us.gcr.io/<project name>/vuln-jboss:vuln-as6` and `gcloud docker -- push us.gcr.io/<project name>/jboss-latest:latest` everything after the colon designates the version in the container registry. 
 
 
 * Starting the servers
