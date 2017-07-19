@@ -70,7 +70,7 @@ Note: If any of the tools above don’t seem like they’re working in a command
 
 ### Windows
 * `set PROJECT_ID=(GCP-Project-ID)`
-* `docker build -t us.gcr.io/%PROJECT_ID%/test:v1`
+* `docker build -t us.gcr.io/%PROJECT_ID%/test:v1 .`
 * `docker run --rm us.gcr.io/%PROJECT_ID%/test:v1`
 
 
