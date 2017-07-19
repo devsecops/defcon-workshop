@@ -39,7 +39,7 @@ https://cloud.google.com/sdk/docs/quickstart-mac-os-x (download tar, extract, an
 https://download.docker.com/win/stable/DockerToolbox.exe
 
 * Install Minikube
-Download this file minikube-windows-amd64.exe
+Download this file [minikube-windows-amd64.exe](https://storage.googleapis.com/minikube/releases/latest/minikube-windows-amd64.exe) and rename it to minikube.exe
 Place it in your Program Files directory under Minikube
 Add the folder to your PATH by right clicking on the Windows icon in the lower left hand side, clicking System, then clicking on Advanced system settings in the left hand pane
 Click on Environment Variables at the bottom of that screen and double clicking on ‘Path’ under System variables
