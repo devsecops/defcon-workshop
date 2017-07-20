@@ -2,7 +2,7 @@
 
 ## Overview
 In this section,
-1. We will briefly discuss the various Google Cloud Platform (GCP) web services and
+1. We will briefly discuss the various Google Cloud Platform (GCP) web services.
 2. We will cover the basic concepts of [Kubernetes](https://kubernetes.io/).
 3. We will deploy our first Kubernetes (K8S) cluster locally using [Minikube](https://github.com/kubernetes/minikube).
 4. We will deploy our first Kubernetes (K8S) cluster remotely on GCP.

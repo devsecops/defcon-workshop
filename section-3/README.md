@@ -8,7 +8,7 @@ In this section,
 4. We will convert NMAP data into a format that can be ingested into Google BigQuery using a custom Data Converter.
 5. We will show how to run queries on Google BigQuery.
 6. We will run a cronjob by running NMAP at a specific schedule against a target.
-7. We will cleanup everything we set above.
+7. We will cleanup everything we setup above.
 
 
 ## Switching back context to Minikube
