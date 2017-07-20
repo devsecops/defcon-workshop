@@ -1,5 +1,11 @@
 # Section-1
 
+## Overview
+In this section,
+1. We will install all the software & set everything up for the rest of the workshop.
+2. We will build our first Docker image.
+3. We will push that Docker image to Google Container Registry (GCR).
+
 ## Installation / Setting up
 
 A Google Cloud Platform (GCP) account – You can use the GCP Free Tier to get one
@@ -54,7 +60,7 @@ Restart your command prompt and then type: `gcloud components install kubectl`
 * Install the GO programming language
 https://storage.googleapis.com/golang/go1.8.3.windows-amd64.msi
 
-Note: If any of the tools above don’t seem like they’re working in a command prompt after installation, try closing your prompt and opening a new one.  The tool should then work.  
+Note: If any of the tools above don’t seem like they’re working in a command prompt after installation, try closing your prompt and opening a new one.  The tool should then work.
 
 
 
