@@ -2,7 +2,12 @@
 
 ## Overview
 In this section,
-1. We will
+1. We will start a vulnerable and a non-vulnerable JBOSS server in our K8S cluster.
+2. We will start an attack host (with our exploit tools installed) in our K8S cluster.
+3. We will attack both the JBOSS servers from the attack host.
+4. We will destroy the JBOSS servers and the attack host.
+5. We will introduce the target, the attack surface exposed by that target and our automated testing methodology we will be using to attack that target.
+6. We will finally end the workshop by demo'ing the entire automation described above by issuing a single command from Slack using [Kubebot](https://github.com/anshumanbh/kubebot).
 
 
 ## Stand up vulnerable and non-vulnerable JBOSS servers
