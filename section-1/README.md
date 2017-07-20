@@ -81,4 +81,8 @@ Note: If any of the tools above don’t seem like they’re working in a command
 
 
 ## Pushing the Docker image to Google Container Registry (GCR)
+
+### Linux/Mac
 * `gcloud docker -- push us.gcr.io/$PROJECT_ID/test:v1`
+### Windows
+* `gcloud docker -- push us.gcr.io/%project_id%/test:v1`
