@@ -46,8 +46,8 @@ service:string
 version:string
 ```
 2. `nmap -Pn -p 1-1000 -oN google_results.nmap google.com` - running nmap locally
-* Complete the `.env` file in the `data-converter` folder with the appropriate `PROJECT_ID`, `DATASET_NAME` and `TABLE_NAME`
-3. In that folder, type `go get cloud.google.com/go/bigquery` and then `go get github.com/subosito/gotenv` and finally `go run dataconvert.go google_results.nmap` - Run the data converter locally
+* Complete the `.env` file in the `data-converter` folder with the appropriate `PROJECT_ID`, `DATASET_NAME` and `TABLE_NAME` and rename it to `.env`
+3. In that folder, type `go get cloud.google.com/go/bigquery` and then `go get github.com/subosito/gotenv` and finally `go run dataconvert.go ../google_results.nmap` - Run the data converter locally
 
 ### Running on a K8S cluster
 1. Navigate to `IAM & Admin` -> `Service Accounts`. Create a key for the default Compute Engine Service Account and download the JSON key
