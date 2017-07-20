@@ -70,14 +70,14 @@ Note: If any of the tools above don’t seem like they’re working in a command
 * `git clone https://github.com/devsecops/defcon-workshop.git`
 *  Change into the section-1 directory of the defcon-workshop repo
 ### Linux/Mac
-* `export PROJECT_ID=(GCP-Project-ID)`
+* `export PROJECT_ID=<GCP-Project-ID>`
 * `docker build -t us.gcr.io/$PROJECT_ID/test:v1 .`
 * `docker run --rm us.gcr.io/$PROJECT_ID/test:v1`
 
 ### Windows
-* `set PROJECT_ID=(GCP-Project-ID)`
-* `docker build -t us.gcr.io/%PROJECT_ID%/test:v1 .`
-* `docker run --rm us.gcr.io/%PROJECT_ID%/test:v1`
+* `set project_id=<GCP-Project-ID>`
+* `docker build -t us.gcr.io/%project_id%/test:v1 .`
+* `docker run --rm us.gcr.io/%project_id%/test:v1`
 
 
 ## Pushing the Docker image to Google Container Registry (GCR)
