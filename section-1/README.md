@@ -17,10 +17,12 @@ A Google Cloud Platform (GCP) account – You can use the GCP Free Tier to get o
 * Install Xcode from app store (this will install Git so you can clone the repo)
 
 * Docker
+
 https://www.docker.com/products/docker-toolbox
 https://docs.docker.com/docker-for-mac/install/#download-docker-for-mac
 
 * Minikube installed on the laptop
+
 https://kubernetes.io/docs/tasks/tools/install-minikube/
 
 `curl -Lo minikube https://storage.googleapis.com/minikube/releases/v0.19.1/minikube-darwin-amd64 && chmod +x minikube && sudo mv minikube /usr/local/bin/`
