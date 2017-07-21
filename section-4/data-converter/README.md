@@ -7,14 +7,14 @@
 
 the output should look simliar to this: 
 
-```wfuzzds already exists
+`wfuzzds already exists
 wfuzz_tomcat_test already exists. Deleting it now..
 wfuzz_tomcat_test deleted. Creating it again now..
 wfuzz_tomcat_test recreated
 reposupervisords already exists
 reposupervisor_test already exists. Deleting it now..
 reposupervisor_test deleted. Creating it again now..
-reposupervisor_test recreated```
+reposupervisor_test recreated`
 
 * The above command will mount the local directory where you stored your GAC credentials file to `/tmp/data` inside the container. Once, it does that, it will run the `abhartiya/utils_bqps:v1` container with the arguments - `-project defcon-workshop -gac /tmp/data/<gacfilename> -wfdataset wfuzzds -wftable wfuzz_tomcat_test -rsdataset reposupervisords -rstable reposupervisor_test`. Once the container runs, the following will happen:
 
