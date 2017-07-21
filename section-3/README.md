@@ -39,8 +39,8 @@ In this section,
 * `kubectl apply -f deployments/nmap-deployment.yaml`
 
 ## Google PubSub in action
-Follow the steps in the following link to set up GOOGLE_APPLICATION_CREDENTIALS: 
-* https://developers.google.com/identity/protocols/application-default-credentials
+Before we could go ahead with this section, we need to make sure we have the correct environment setup. Please follow the steps in the following [link](https://developers.google.com/identity/protocols/application-default-credentials) to set up `GOOGLE_APPLICATION_CREDENTIALS` as an environment variable.
+
 
 1. `virtualenv env`
 2. `. env/bin/activate`
@@ -51,8 +51,7 @@ Follow the steps in the following link to set up GOOGLE_APPLICATION_CREDENTIALS:
 7. `python scripts/listenfromsub.py` - Listening for that message from the subscription
 8. `python scripts/deletetopicandsub.py` - Deleting the topic and subscription
 
-References:
-* https://cloud.google.com/pubsub/docs/reference/libraries#client-libraries-install-python
+References: [link](https://cloud.google.com/pubsub/docs/reference/libraries#client-libraries-install-python)
 
 ## Convert NMAP data into BigQuery ingest-able format using a Data Converter
 
@@ -66,9 +65,9 @@ protocol:string
 service:string
 version:string
 ```
-2. `nmap -Pn -p 1-1000 -oN google_results.nmap google.com` - running nmap locally
-* Complete the `.env.sample` file in the `data-converter` folder with the appropriate `PROJECT_ID`, `DATASET_NAME` and `TABLE_NAME` and rename it to `.env`
-3. In that folder, type `go get cloud.google.com/go/bigquery` and then `go get github.com/subosito/gotenv` and finally `go run dataconvert.go ../google_results.nmap` - Run the data converter locally
+2. Run NMAP with the following command - `nmap -Pn -p 1-1000 -oN google_results.nmap google.com`.
+3. Complete the `.env.sample` file in the `data-converter` folder with the appropriate `PROJECT_ID`, `DATASET_NAME` and `TABLE_NAME` and copy it to `.env`
+4. In that folder, type `go get cloud.google.com/go/bigquery` and then `go get github.com/subosito/gotenv` and finally `go run dataconvert.go ../google_results.nmap` - Run the data converter locally
 
 ### Running on a K8S cluster
 1. Navigate to `IAM & Admin` -> `Service Accounts`. Create a key for the default Compute Engine Service Account and download the JSON key
