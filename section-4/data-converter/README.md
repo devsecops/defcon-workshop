@@ -4,6 +4,7 @@
 * Replace the directory path `/path/where/gac/is/stored/` in the command below to the **directory** where GAC credentials file is stored locally on your workstation. Replace the `PROJECTID` as well. Replace the `gacfilename` with the name of the GAC credentials file.
 
 `docker run -it -v /path/where/gac/is/stored/:/tmp/data/ abhartiya/utils_bqps:v1 -project <PROJECTID> -gac /tmp/data/<gacfilename> -wfdataset wfuzzds -wftable wfuzz_tomcat_test -rsdataset reposupervisords -rstable reposupervisor_test` the output should look simliar to this: 
+
 ```wfuzzds already exists
 wfuzz_tomcat_test already exists. Deleting it now..
 wfuzz_tomcat_test deleted. Creating it again now..
