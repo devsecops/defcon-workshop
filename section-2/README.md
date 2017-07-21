@@ -54,7 +54,7 @@ Reference: [link](https://www.redhat.com/en/containers/what-is-kubernetes)
 2. `gcloud alpha container clusters create remote-cluster --enable-kubernetes-alpha --scopes bigquery,storage-rw,compute-ro,https://www.googleapis.com/auth/pubsub` - Creates an alpha K8S cluster with scopes
 3. `gcloud container clusters get-credentials remote-cluster --zone us-west1-a --project $PROJECT_ID` - Connecting to the remote K8S cluster and generating an entry in the `~/.kube/config` file for it
 4. `kubectl get nodes` - Verify you are talking to the remote K8S cluster
-5. `kubectl proxy` - Starts a proxy locally to view the remote K8S dashboard. Same as typing `minikube dashboard` in the above usecase
+5. `kubectl proxy` - Starts a proxy locally to view the remote K8S dashboard. You can then view the Minikube dashboard by navigating to `https://192.168.99.100:30000` in the browser. This is the same as typing `minikube dashboard` in the above usecase
 6. `kubectl apply -f remote-deployment.yaml` - Deploys the remote K8S cluster on GCP. Similar commands as above apply here as well
 7. `kubectl delete deployments --namespace=remote-server --all` - Deletes the remote deployments in the namespace
 8. `kubectl delete namespace remote-server` - Deletes the namespace
