@@ -54,7 +54,8 @@ In this section, we will:
 
     https://docs.docker.com/docker-for-mac/install/#download-docker-for-mac
 
-    * if you're using Kali, use the install script [kali-install-docker.sh](./kali-install-docker.sh)
+    * if you're using Kali, use the install script [kali-install-docker.sh](./kali-install-docker.sh). 
+    * Unfortunately, this [script] only works for x64 Kali builds. 
 
 * **Install Minikube:**
 
