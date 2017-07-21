@@ -1,5 +1,23 @@
 # Section-4
 
+## Table of Contents
+<!-- TOC -->
+
+- [Section-4](#section-4)
+    - [Table of Contents](#table-of-contents)
+    - [Overview](#overview)
+    - [Stand up vulnerable and non-vulnerable JBOSS servers](#stand-up-vulnerable-and-non-vulnerable-jboss-servers)
+    - [Stand up Attack Host with exploit tools](#stand-up-attack-host-with-exploit-tools)
+    - [Using Attack Host to exploit](#using-attack-host-to-exploit)
+    - [Destroying the environment](#destroying-the-environment)
+    - [Introducing Target, Attack Surface and Automated Testing Methodology](#introducing-target-attack-surface-and-automated-testing-methodology)
+        - [Running locally](#running-locally)
+        - [Running on a K8S cluster](#running-on-a-k8s-cluster)
+        - [Cleanup](#cleanup)
+        - [Sending a request from Kubebot for a target company](#sending-a-request-from-kubebot-for-a-target-company)
+
+<!-- /TOC -->
+
 ## Overview
 In this section,
 1. We will start a vulnerable and a non-vulnerable JBOSS server in our K8S cluster.
@@ -33,8 +51,8 @@ In this section,
 
 ## Stand up Attack Host with exploit tools
 1. From the `attackhost` directory, type
-    * `docker build -t us.gcr.io/defcon-workshop/attackhost .`
-    * `gcloud docker -- push us.gcr.io/<project name>/attackhost`
+    * `docker build -t us.gcr.io/<project_id>/attackhost .`
+    * `gcloud docker -- push us.gcr.io/<project_id>/attackhost`
 2. Navigate to Google Container Registry and verify the image exists.
 3. Start the attackhost deployment by typing - `kubectl apply -f attack-host.yaml`
 

@@ -1,5 +1,24 @@
 # Section-3
 
+## Table of Contents
+
+<!-- TOC -->
+
+- [Section-3](#section-3)
+    - [Table of Contents](#table-of-contents)
+    - [Overview](#overview)
+    - [Switching back context to Minikube](#switching-back-context-to-minikube)
+    - [Running NMAP on the local K8S cluster](#running-nmap-on-the-local-k8s-cluster)
+    - [Google PubSub in action](#google-pubsub-in-action)
+    - [Convert NMAP data into BigQuery ingest-able format using a Data Converter](#convert-nmap-data-into-bigquery-ingest-able-format-using-a-data-converter)
+        - [Running Locally](#running-locally)
+        - [Running on a K8S cluster](#running-on-a-k8s-cluster)
+    - [Querying BigQuery](#querying-bigquery)
+    - [Running Cronjobs](#running-cronjobs)
+    - [Cleanup](#cleanup)
+
+<!-- /TOC -->
+
 ## Overview
 In this section,
 1. We will switch our `kubectl` context back from the remote K8S cluster (on GCP) to Minikube.
@@ -55,7 +74,7 @@ version:string
 1. Navigate to `IAM & Admin` -> `Service Accounts`. Create a key for the default Compute Engine Service Account and download the JSON key
 2. `kubectl create secret generic googlesecret --from-file=$(CREDS_FILEPATH)` - Create a secret with the value of the secret being the JSON credentials file downloaded above. We need this because the containers on the cluster need to authenticate to our K8S cluster to be able to create anything. We don't do this locally because our gcloud environment, by default, is already configured when we first set it up but we need it when running on a K8S cluster
 3. `kubectl get secrets` - Verify the secret was created
-4. Make sure the environment values in the `deployments/nmap-bq-pod.yaml` deployment file are accurate
+4. Make sure the environment values in the `deployments/nmap-bq-pod.yaml` deployment file are accurate. The following values need to be changed - [PROJECT_ID](https://github.com/devsecops/defcon-workshop/blob/master/section-3/deployments/nmap-bq-pod.yaml#L14) and [GOOGLE_APPLICATION_CREDENTIALS](https://github.com/devsecops/defcon-workshop/blob/master/section-3/deployments/nmap-bq-pod.yaml#L20)
 5. `kubectl apply -f deployments/nmap-bq-pod.yaml`
 
 References:
@@ -82,3 +101,4 @@ GROUP BY ip, port
 4. `kubectl delete deployments --all`
 5. `kubectl delete cronjobs --all`
 6. `kubectl delete jobs --all`
+†
