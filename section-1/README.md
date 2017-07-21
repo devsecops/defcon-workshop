@@ -19,7 +19,7 @@ In this section, we will:
 
 ### Google Cloud Platform (GCP) account 
 * You can use the GCP Free Tier to get one
- https://cloud.google.com/free/
+    https://cloud.google.com/free/
 
 
 ### MacOS/Linux
@@ -28,23 +28,23 @@ In this section, we will:
 
 * Docker
 
-https://www.docker.com/products/docker-toolbox
+    https://www.docker.com/products/docker-toolbox
 
-https://docs.docker.com/docker-for-mac/install/#download-docker-for-mac
+    https://docs.docker.com/docker-for-mac/install/#download-docker-for-mac
 
 * Install Minikube:
 
-https://kubernetes.io/docs/tasks/tools/install-minikube/
+    https://kubernetes.io/docs/tasks/tools/install-minikube/
 
-```
+    ```
 curl -Lo minikube https://storage.googleapis.com/minikube/releases/v0.19.1/minikube-darwin-amd64 && chmod +x minikube && sudo mv minikube /usr/local/bin/
-```
+    ```
 
 * Install Kubectl:
 
-```
+    ```
 curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/darwin/amd64/kubectl && chmod +x ./kubectl && sudo mv ./kubectl /usr/local/bin/kubectl
-```
+    ```
 
 * Virtualbox
 
