@@ -72,7 +72,7 @@ https://virtualenv.pypa.io/en/stable/installation/
 https://download.docker.com/win/stable/DockerToolbox.exe
 
 * Install Minikube
-    * Download this file [minikube-windows-amd64.exe](https://storage.googleapis.com/minikube/releases/latest/minikube-windows-amd64.exe) and rename it to minikube.exe
+    * Download this file [https:storage.googleapis.com/minikube/releases/latest/minikube-windows-amd64.exe](https://storage.googleapis.com/minikube/releases/latest/minikube-windows-amd64.exe) and rename it to minikube.exe
     * Place it in your Program Files directory under Minikube
     * Add the folder to your PATH by right clicking on the Windows icon in the lower left hand side, clicking System, then clicking on Advanced system settings in the left hand pane
     * Click on Environment Variables at the bottom of that screen and double clicking on ‘Path’ under System variables
@@ -91,7 +91,7 @@ https://virtualenv.pypa.io/en/stable/installation/
 
 * Install the GO programming language
 
-https://storage.googleapis.com/golang/go1.8.3.windows-amd64.msi
+    https://storage.googleapis.com/golang/go1.8.3.windows-amd64.msi
 
 Note: If any of the tools above don’t seem like they’re working in a command prompt after installation, try closing your prompt and opening a new one.  The tool should then work.
 
