@@ -137,7 +137,7 @@ Note: If any of the tools above don’t seem like they’re working in a command
 ## Pushing the Docker image to Google Container Registry (GCR)
 
 * Enable Google Container Registry API in GCP’s API Manager.
-* Use `gcloud init` to make sure your gcloud configuration is for the right account and project if you run into this error: `denied: Unable to create the repository, please check that you have access to do so.` You might also need: `docker tag us.gcr.io/$PROJECT_ID/test:v1 us.gcr.io/$PROJECT_ID/test:v1`
+* Use `gcloud init` to make sure your gcloud configuration is for the right account and project if you run into this error: `denied: Unable to create the repository, please check that you have access to do so.`
 
 ### Linux/Mac
 * `gcloud docker -- push us.gcr.io/$PROJECT_ID/test:v1`
