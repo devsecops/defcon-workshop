@@ -22,7 +22,7 @@
 
 ## Overview
 In this section, we will:
-1. Install set up our environment for the workshop.
+1. Install and set up our environment for the workshop.
 2. Build our first Docker image.
 3. Push our Docker image to Google Container Registry (GCR).
 
