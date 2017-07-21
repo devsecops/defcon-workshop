@@ -70,19 +70,13 @@ In this section, we will:
 
     https://www.virtualbox.org/wiki/Downloads
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-* Virtualenv
 
-https://virtualenv.pypa.io/en/stable/installation/
+* **Install Virtualenv**
 
-* The GO programming language installed on the laptop
-=======
-* **Install The GO programming language installed on the laptop**
->>>>>>> make headers bold
-=======
+    https://virtualenv.pypa.io/en/stable/installation/
+
+
 * **Install the GO programming language**
->>>>>>> add missed bold, new tab
 
     https://golang.org/dl/ (download and install .pkg)
 
@@ -113,15 +107,11 @@ https://virtualenv.pypa.io/en/stable/installation/
     * Uncheck all of the boxes and click finish
     * Restart your command prompt and then type: `gcloud components install kubectl`
 
-<<<<<<< HEAD
-* Virtualenv
+* **Install Virtualenv**
 
-https://virtualenv.pypa.io/en/stable/installation/
+    https://virtualenv.pypa.io/en/stable/installation/
 
-* Install the GO programming language
-=======
 * **Install the GO programming language**
->>>>>>> make headers bold
 
     https://storage.googleapis.com/golang/go1.8.3.windows-amd64.msi
 
