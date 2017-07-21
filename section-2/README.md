@@ -1,5 +1,21 @@
 # Section-2
 
+## Table of Contents
+<!-- TOC -->
+
+- [Section-2](#section-2)
+    - [Table of Contents](#table-of-contents)
+    - [Overview](#overview)
+    - [GCP Web Services overview](#gcp-web-services-overview)
+    - [Kubernetes aka K8s review](#kubernetes-aka-k8s-review)
+        - [K8s Core](#k8s-core)
+        - [K8s Overview](#k8s-overview)
+    - [Deploying a K8S cluster locally on minikube](#deploying-a-k8s-cluster-locally-on-minikube)
+    - [Deploying a K8S cluster remotely on GCP](#deploying-a-k8s-cluster-remotely-on-gcp)
+
+<!-- /TOC -->
+
+
 ## Overview
 In this section,
 1. We will briefly discuss the various Google Cloud Platform (GCP) web services.
