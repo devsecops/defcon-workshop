@@ -1,14 +1,24 @@
 # Section-1
 
 ## Overview
-In this section,
-1. We will install all the software & set everything up for the rest of the workshop.
-2. We will build our first Docker image.
-3. We will push that Docker image to Google Container Registry (GCR).
+In this section, we will:
+1. install set up our environment for the workshop.
+2. build our first Docker image.
+3. push our Docker image to Google Container Registry (GCR).
 
 ## Installation / Setting up
 
-A Google Cloud Platform (GCP) account – You can use the GCP Free Tier to get one
+### Requirements
+1. Google Cloud Platform (GCP) account
+2. Docker
+3. Minikube
+4. kubectl 
+5. VirtualBox
+6. GoLang
+7. Google Cloud SDK
+
+### Google Cloud Platform (GCP) account 
+* You can use the GCP Free Tier to get one
  https://cloud.google.com/free/
 
 
@@ -22,19 +32,19 @@ https://www.docker.com/products/docker-toolbox
 
 https://docs.docker.com/docker-for-mac/install/#download-docker-for-mac
 
-* Minikube installed on the laptop
+* Install Minikube:
 
 https://kubernetes.io/docs/tasks/tools/install-minikube/
 
-`curl -Lo minikube https://storage.googleapis.com/minikube/releases/v0.19.1/minikube-darwin-amd64 && chmod +x minikube && sudo mv minikube /usr/local/bin/`
+```curl -Lo minikube https://storage.googleapis.com/minikube/releases/v0.19.1/minikube-darwin-amd64 && chmod +x minikube && sudo mv minikube /usr/local/bin/```
 
-* Kubectl installed on the laptop
+* Install Kubectl:
 
-`curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/darwin/amd64/kubectl && chmod +x ./kubectl && sudo mv ./kubectl /usr/local/bin/kubectl`
+```curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/darwin/amd64/kubectl && chmod +x ./kubectl && sudo mv ./kubectl /usr/local/bin/kubectl```
 
 * Virtualbox
 
-https://www.virtualbox.org/wiki/Downloads
+    https://www.virtualbox.org/wiki/Downloads
 
 * Virtualenv
 
@@ -42,11 +52,11 @@ https://virtualenv.pypa.io/en/stable/installation/
 
 * The GO programming language installed on the laptop
 
-https://golang.org/dl/ (download and install .pkg)
+    https://golang.org/dl/ (download and install .pkg)
 
 * Google Cloud SDK installed on the laptop
 
-https://cloud.google.com/sdk/docs/quickstart-mac-os-x (download tar, extract, and run ./install.sh)
+    https://cloud.google.com/sdk/docs/quickstart-mac-os-x (download tar, extract, and run ./install.sh)
 
 * Initialize Google SDK: Open a new terminal and run `gcloud init` (set project to defcon-workshop and default region to us-west1-a)
 
