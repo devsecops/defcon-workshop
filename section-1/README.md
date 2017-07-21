@@ -34,8 +34,9 @@ In this section, we will:
 3. Minikube
 4. kubectl 
 5. VirtualBox
-6. GoLang
-7. Google Cloud SDK
+6. Virtualenv
+7. GoLang
+8. Google Cloud SDK
 
 ### Google Cloud Platform (GCP) account 
 * You can use the GCP Free Tier to get one
