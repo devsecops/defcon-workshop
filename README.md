@@ -6,5 +6,5 @@
 
 * The entire workshop is divided into 4 Sections. We will walk through the basics including the setting up of all the software and tools necessary to understand the concepts.
 
-* Finally, we will finish off the workshop with some advanced use cases and demonstrate how such usecases/workflows can be used to automate and scale security testing using Kubernetes and Google Cloud Platform.
+* Finally, we will finish off the workshop with some advanced use cases and demonstrate how they can be used to automate and scale security testing using Kubernetes and Google Cloud Platform.
 
