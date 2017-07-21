@@ -8,3 +8,6 @@
 
 * Finally, we will finish off the workshop with some advanced use cases and demonstrate how such usecases/workflows can be used to automate and scale security testing using Kubernetes and Google Cloud Platform.
 
+## Credits
+
+A big thanks to Javier Godinez, Erik Owen, Khoa Nguyen and JC Law for helping us test this workshop and for giving some solid feedback!
