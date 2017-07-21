@@ -33,8 +33,8 @@ In this section,
 
 ## Stand up Attack Host with exploit tools
 1. From the `attackhost` directory, type
-    * `docker build -t us.gcr.io/defcon-workshop/attackhost .`
-    * `gcloud docker -- push us.gcr.io/<project name>/attackhost`
+    * `docker build -t us.gcr.io/<project_id>/attackhost .`
+    * `gcloud docker -- push us.gcr.io/<project_id>/attackhost`
 2. Navigate to Google Container Registry and verify the image exists.
 3. Start the attackhost deployment by typing - `kubectl apply -f attack-host.yaml`
 
