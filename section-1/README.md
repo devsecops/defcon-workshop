@@ -19,6 +19,7 @@ A Google Cloud Platform (GCP) account – You can use the GCP Free Tier to get o
 * Docker
 
 https://www.docker.com/products/docker-toolbox
+
 https://docs.docker.com/docker-for-mac/install/#download-docker-for-mac
 
 * Minikube installed on the laptop
