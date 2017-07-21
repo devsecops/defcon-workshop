@@ -44,7 +44,7 @@ https://golang.org/dl/ (download and install .pkg)
 
 https://cloud.google.com/sdk/docs/quickstart-mac-os-x (download tar, extract, and run ./install.sh)
 
-* Initialize Google SDK: Open a new terminal and run gcloud init (set project to defcon-workshop and default region to us-west1-a)
+* Initialize Google SDK: Open a new terminal and run `gcloud init` (set project to defcon-workshop and default region to us-west1-a)
 
 
 ### Windows
