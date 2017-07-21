@@ -41,18 +41,18 @@ In this section,
 
 
 * Getting the image ready to push to GCP
-    * Once the image is pulled down you're going to want to tag the image to get it ready for GCP.  Type `docker images` to get a list of your local images.  Copy the Image ID of the tutum/jboss images with the tag of *latest* and type the following command `docker tag <Image ID> us.gcr.io/<project name>/jboss-latest` replacing the image id and project name with that of your own.  Now if you type `docker images` you should see your newly tagged images ready for GCP
-    * Repeat the step above for the as6 version labeling it `jboss-vulnerable:as6`
-    * Now we have to upload the images to the container registry in GCP. Type the following command to upload the newly tagged image to GCP: `gcloud docker -- push us.gcr.io/<project name>/jboss-vulnerable:as6` and `gcloud docker -- push us.gcr.io/<project name>/jboss-latest:latest` everything after the colon designates the version in the container registry.
+    * Once the image is pulled down you're going to want to tag the image to get it ready for GCP.  Type `docker images` to get a list of your local images.  Copy the Image ID of the tutum/jboss images with the tag of *latest* and type the following command `docker tag <Image ID> us.gcr.io/$PROJECT_ID/jboss-latest` replacing the <Image ID> with that of your own.  Now if you type `docker images` you should see your newly tagged images ready for GCP
+    * Repeat the step above for the as6 version labeling it `jboss-vulnerable:as6`: `docker tag <Image ID> us.gcr.io/$PROJECT_ID/jboss-vulnerable:as6`
+    * Now we have to upload the images to the container registry in GCP. Type the following command to upload the newly tagged image to GCP: `gcloud docker -- push us.gcr.io/$PROJECT_ID/jboss-vulnerable:as6` and `gcloud docker -- push us.gcr.io/$PROJECT_ID/jboss-latest:latest` everything after the colon designates the version in the container registry.
 
 
 * Starting the servers
-    * Now that the images are in the container registry on GCP, we'll want to start them up and expose the proper ports.  To do that issue the following commands: `kubectl run jboss-latest --image=us.gcr.io/<project name>/jboss-latest --port=8080` and `kubectl run vuln-jboss --image=us.gcr.io/<project name>/jboss-vulnerable:as6 --port=8080`
+    * Now that the images are in the container registry on GCP, we'll want to start them up and expose the proper ports.  To do that issue the following commands: `kubectl run jboss-latest --image=us.gcr.io/$PROJECT_ID/jboss-latest --port=8080` and `kubectl run vuln-jboss --image=us.gcr.io/$PROJECT_ID/jboss-vulnerable:as6 --port=8080`
 
 ## Stand up Attack Host with exploit tools
 1. From the `attackhost` directory, type
-    * `docker build -t us.gcr.io/<project_id>/attackhost .`
-    * `gcloud docker -- push us.gcr.io/<project_id>/attackhost`
+    * `docker build -t us.gcr.io/$PROJECT_ID/attackhost .`
+    * `gcloud docker -- push us.gcr.io/$PROJECT_ID/attackhost`
 2. Navigate to Google Container Registry and verify the image exists.
 3. Start the attackhost deployment by typing - `kubectl apply -f attack-host.yaml`
 
