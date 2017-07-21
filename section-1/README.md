@@ -36,6 +36,10 @@ https://kubernetes.io/docs/tasks/tools/install-minikube/
 
 https://www.virtualbox.org/wiki/Downloads
 
+* Virtualenv
+
+https://virtualenv.pypa.io/en/stable/installation/
+
 * The GO programming language installed on the laptop
 
 https://golang.org/dl/ (download and install .pkg)
@@ -66,6 +70,10 @@ https://download.docker.com/win/stable/DockerToolbox.exe
     * Download and run the SDK from here: https://dl.google.com/dl/cloudsdk/channels/rapid/GoogleCloudSDKInstaller.exe
     * Uncheck all of the boxes and click finish
     * Restart your command prompt and then type: `gcloud components install kubectl`
+
+* Virtualenv
+
+https://virtualenv.pypa.io/en/stable/installation/
 
 * Install the GO programming language
 
