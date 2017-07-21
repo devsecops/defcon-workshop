@@ -20,6 +20,8 @@ In this section,
 * `kubectl apply -f deployments/nmap-deployment.yaml`
 
 ## Google PubSub in action
+Follow the steps in the following link to set up GOOGLE_APPLICATION_CREDENTIALS: 
+* https://developers.google.com/identity/protocols/application-default-credentials
 
 1. `virtualenv env`
 2. `. env/bin/activate`
