@@ -1,8 +1,13 @@
 # Convert data into BigQuery ingest-able format using a Generic Data Converter
 
 ## Running Locally
-* `go run scripts/main.go -project <PROJECTID> -gac <GACCREDS> -wfdataset wfuzzds -wftable wfuzz_tomcat_test -rsdataset reposupervisords -rstable reposupervisor_test`. This command will:
-    * Create a BiqQUery dataset `wfuzzds` and an empty table `wfuzz_tomcat_test` in Google BigQuery to store the processed wfuzz results with the following schema (all nullable):
+* Replace the directory path `/path/where/gac/is/stored/` in the command below to the path where GAC credentials file is stored locally on your workstation. Replace the `PROJECTID` as well. Replace the `gacfilename` with the name of the GAC credentials file.
+
+`docker run -it -v /path/where/gac/is/stored/:/tmp/data/ abhartiya/utils_bqps:v1 -project <PROJECTID> -gac /tmp/data/<gacfilename> -wfdataset wfuzzds -wftable wfuzz_tomcat_test -rsdataset reposupervisords -rstable reposupervisor_test`
+
+* The above command will mount the local directory where you stored your GAC credentials file to `/tmp/data` inside the container. Once, it does that, it will run the `abhartiya/utils_bqps:v1` container with the arguments - `-project defcon-workshop -gac /tmp/data/<gacfilename> -wfdataset wfuzzds -wftable wfuzz_tomcat_test -rsdataset reposupervisords -rstable reposupervisor_test`. Once the container runs, the following will happen:
+
+    * Create a BiqQuery dataset `wfuzzds` and an empty table `wfuzz_tomcat_test` in Google BigQuery to store the processed wfuzz results with the following schema (all nullable):
 
     ```
     ID:string
