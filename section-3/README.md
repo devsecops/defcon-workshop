@@ -101,4 +101,5 @@ GROUP BY ip, port
 4. `kubectl delete deployments --all`
 5. `kubectl delete cronjobs --all`
 6. `kubectl delete jobs --all`
+7. `deactivate` to escape from the virtualenv
 †
