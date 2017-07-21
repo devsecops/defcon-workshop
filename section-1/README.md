@@ -33,12 +33,15 @@ https://kubernetes.io/docs/tasks/tools/install-minikube/
 `curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/darwin/amd64/kubectl && chmod +x ./kubectl && sudo mv ./kubectl /usr/local/bin/kubectl`
 
 * Virtualbox
+
 https://www.virtualbox.org/wiki/Downloads
 
 * The GO programming language installed on the laptop
+
 https://golang.org/dl/ (download and install .pkg)
 
 * Google Cloud SDK installed on the laptop
+
 https://cloud.google.com/sdk/docs/quickstart-mac-os-x (download tar, extract, and run ./install.sh)
 
 * Initialize Google SDK: Open a new terminal and run gcloud init (set project to defcon-workshop and default region to us-west1-a)
