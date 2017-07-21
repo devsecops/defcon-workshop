@@ -67,6 +67,10 @@ https://download.docker.com/win/stable/DockerToolbox.exe
     * Uncheck all of the boxes and click finish
     * Restart your command prompt and then type: `gcloud components install kubectl`
 
+* Virtualenv
+
+https://virtualenv.pypa.io/en/stable/installation/
+
 * Install the GO programming language
 
 https://storage.googleapis.com/golang/go1.8.3.windows-amd64.msi
