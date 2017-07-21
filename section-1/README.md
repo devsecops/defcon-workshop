@@ -76,8 +76,9 @@ Note: If any of the tools above don’t seem like they’re working in a command
 
 ## Building the first Docker image
 * Open a shell/command prompt and clone this repository with the following command:
-* `git clone https://github.com/devsecops/defcon-workshop.git`
+    * `git clone https://github.com/devsecops/defcon-workshop.git`
 *  Change into the section-1 directory of the defcon-workshop repo
+
 ### Linux/Mac
 * `export PROJECT_ID=<GCP-Project-ID>`
 * `docker build -t us.gcr.io/$PROJECT_ID/test:v1 .`
