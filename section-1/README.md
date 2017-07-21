@@ -151,3 +151,4 @@ Note: If any of the tools above don’t seem like they’re working in a command
 
 ## References:
 - https://gist.github.com/nikallass/e5124756d0e2bdcf8981827f3ed40bcc
+- https://gist.github.com/apolloclark/f0e3974601346883c731
