@@ -24,15 +24,15 @@ In this section, we will:
 
 ### MacOS/Linux
 
-* Install Xcode from app store (this will install Git so you can clone the repo)
+* **Install Xcode from app store (this will install Git so you can clone the repo)**
 
-* Docker
+* **Install Docker**
 
     https://www.docker.com/products/docker-toolbox
 
     https://docs.docker.com/docker-for-mac/install/#download-docker-for-mac
 
-* Install Minikube:
+* **Install Minikube:**
 
     https://kubernetes.io/docs/tasks/tools/install-minikube/
 
@@ -40,25 +40,29 @@ In this section, we will:
     curl -Lo minikube https://storage.googleapis.com/minikube/releases/v0.19.1/minikube-darwin-amd64 && chmod +x minikube && sudo mv minikube /usr/local/bin/
     ```
 
-* Install Kubectl:
+* **Install Kubectl:**
 
     ```
     curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/darwin/amd64/kubectl && chmod +x ./kubectl && sudo mv ./kubectl /usr/local/bin/kubectl
     ```
 
-* Virtualbox
+* **Install Virtualbox**
 
     https://www.virtualbox.org/wiki/Downloads
 
+<<<<<<< HEAD
 * Virtualenv
 
 https://virtualenv.pypa.io/en/stable/installation/
 
 * The GO programming language installed on the laptop
+=======
+* **Install The GO programming language installed on the laptop**
+>>>>>>> make headers bold
 
     https://golang.org/dl/ (download and install .pkg)
 
-* Google Cloud SDK installed on the laptop
+* **Install Google Cloud SDK installed on the laptop**
 
     https://cloud.google.com/sdk/docs/quickstart-mac-os-x (download tar, extract, and run ./install.sh)
 
@@ -67,11 +71,11 @@ https://virtualenv.pypa.io/en/stable/installation/
 
 ### Windows
 
-* Install Docker Toolbox (installs virtualbox, Git, etc.)
+* **Install Docker Toolbox (installs virtualbox, Git, etc.)**
 
 https://download.docker.com/win/stable/DockerToolbox.exe
 
-* Install Minikube
+* **Install Minikube**
     * Download this file [https:storage.googleapis.com/minikube/releases/latest/minikube-windows-amd64.exe](https://storage.googleapis.com/minikube/releases/latest/minikube-windows-amd64.exe) and rename it to minikube.exe
     * Place it in your Program Files directory under Minikube
     * Add the folder to your PATH by right clicking on the Windows icon in the lower left hand side, clicking System, then clicking on Advanced system settings in the left hand pane
@@ -79,17 +83,21 @@ https://download.docker.com/win/stable/DockerToolbox.exe
     * Add the following to the end: `;C:\Program Files\Minikube`
     * Now when you open a command prompt and type minikube it should run using the file in that directory
 
-* Install Google SDK and KubeCtl
+* **Install Google SDK and KubeCtl**
 
     * Download and run the SDK from here: https://dl.google.com/dl/cloudsdk/channels/rapid/GoogleCloudSDKInstaller.exe
     * Uncheck all of the boxes and click finish
     * Restart your command prompt and then type: `gcloud components install kubectl`
 
+<<<<<<< HEAD
 * Virtualenv
 
 https://virtualenv.pypa.io/en/stable/installation/
 
 * Install the GO programming language
+=======
+* **Install the GO programming language**
+>>>>>>> make headers bold
 
     https://storage.googleapis.com/golang/go1.8.3.windows-amd64.msi
 
