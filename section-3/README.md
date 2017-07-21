@@ -61,9 +61,9 @@ References:
 
 ## Querying BigQuery
 
-* Run the below query after replacing your project-id:
+* Run the below query:
 ```
-SELECT ip, port FROM [project-id:nmapds.nmap]
+SELECT ip, port FROM nmapds.nmap
 WHERE ip IS NOT NULL AND port IS NOT NULL
 GROUP BY ip, port
 ```
