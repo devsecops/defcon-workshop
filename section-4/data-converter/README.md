@@ -1,8 +1,10 @@
 # Convert data into BigQuery ingest-able format using a Generic Data Converter
 
 ## Running Locally
+* `go get github.com/google/go-github/github`
+* `go get golang.org/x/sync/errgroup`
 * `go run scripts/main.go -project <PROJECTID> -gac <GACCREDS> -wfdataset wfuzzds -wftable wfuzz_tomcat_test -rsdataset reposupervisords -rstable reposupervisor_test`. This command will:
-    * Create a BiqQUery dataset `wfuzzds` and an empty table `wfuzz_tomcat_test` in Google BigQuery to store the processed wfuzz results with the following schema (all nullable):
+    * Create a BiqQuery dataset `wfuzzds` and an empty table `wfuzz_tomcat_test` in Google BigQuery to store the processed wfuzz results with the following schema (all nullable):
 
     ```
     ID:string
