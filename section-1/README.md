@@ -36,6 +36,10 @@ https://kubernetes.io/docs/tasks/tools/install-minikube/
 
 https://www.virtualbox.org/wiki/Downloads
 
+* Virtualenv
+
+https://virtualenv.pypa.io/en/stable/installation/
+
 * The GO programming language installed on the laptop
 
 https://golang.org/dl/ (download and install .pkg)
