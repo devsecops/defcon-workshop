@@ -69,6 +69,8 @@ Note: If any of the tools above don’t seem like they’re working in a command
 * Open a shell/command prompt and clone this repository with the following command:
 * `git clone https://github.com/devsecops/defcon-workshop.git`
 *  Change into the section-1 directory of the defcon-workshop repo
+* Identify your GCP project ID under Project info in your GCP project console
+
 ### Linux/Mac
 * `export PROJECT_ID=<GCP-Project-ID>`
 * `docker build -t us.gcr.io/$PROJECT_ID/test:v1 .`
@@ -81,6 +83,9 @@ Note: If any of the tools above don’t seem like they’re working in a command
 
 
 ## Pushing the Docker image to Google Container Registry (GCR)
+
+* Enable Google Container Registry API in GCP’s API Manager.
+* Use `gcloud init` to make sure your gcloud configuration is for the right account and project if you run into this error: `denied: Unable to create the repository, please check that you have access to do so.` You might also need: `docker tag us.gcr.io/$PROJECT_ID/test:v1 us.gcr.io/$PROJECT_ID/test:v1`
 
 ### Linux/Mac
 * `gcloud docker -- push us.gcr.io/$PROJECT_ID/test:v1`
