@@ -63,17 +63,15 @@ https://download.docker.com/win/stable/DockerToolbox.exe
 
 * Install Google SDK and KubeCtl
 
-Download and run the SDK from here: https://dl.google.com/dl/cloudsdk/channels/rapid/GoogleCloudSDKInstaller.exe
-Uncheck all of the boxes and click finish
-Restart your command prompt and then type: `gcloud components install kubectl`
+    * Download and run the SDK from here: https://dl.google.com/dl/cloudsdk/channels/rapid/GoogleCloudSDKInstaller.exe
+    * Uncheck all of the boxes and click finish
+    * Restart your command prompt and then type: `gcloud components install kubectl`
 
 * Install the GO programming language
 
 https://storage.googleapis.com/golang/go1.8.3.windows-amd64.msi
 
 Note: If any of the tools above don’t seem like they’re working in a command prompt after installation, try closing your prompt and opening a new one.  The tool should then work.
-
-
 
 
 ## Building the first Docker image
