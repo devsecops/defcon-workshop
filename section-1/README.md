@@ -1,5 +1,25 @@
 # Section-1
 
+## Table of Contents
+<!-- TOC -->
+
+- [Section-1](#section-1)
+    - [Table of Contents](#table-of-contents)
+    - [Overview](#overview)
+    - [Installation / Setting up](#installation--setting-up)
+        - [Requirements](#requirements)
+        - [Google Cloud Platform (GCP) account](#google-cloud-platform-gcp-account)
+        - [MacOS/Linux](#macoslinux)
+        - [Windows](#windows)
+    - [Building the first Docker image](#building-the-first-docker-image)
+        - [Linux/Mac](#linuxmac)
+        - [Windows](#windows-1)
+    - [Pushing the Docker image to Google Container Registry (GCR)](#pushing-the-docker-image-to-google-container-registry-gcr)
+        - [Linux/Mac](#linuxmac-1)
+        - [Windows](#windows-2)
+
+<!-- /TOC -->
+
 ## Overview
 In this section, we will:
 1. install set up our environment for the workshop.
