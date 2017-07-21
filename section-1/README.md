@@ -51,6 +51,7 @@ In this section, we will:
     https://www.virtualbox.org/wiki/Downloads
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 * Virtualenv
 
 https://virtualenv.pypa.io/en/stable/installation/
@@ -59,21 +60,24 @@ https://virtualenv.pypa.io/en/stable/installation/
 =======
 * **Install The GO programming language installed on the laptop**
 >>>>>>> make headers bold
+=======
+* **Install the GO programming language**
+>>>>>>> add missed bold, new tab
 
     https://golang.org/dl/ (download and install .pkg)
 
-* **Install Google Cloud SDK installed on the laptop**
+* **Install Google Cloud SDK**
 
     https://cloud.google.com/sdk/docs/quickstart-mac-os-x (download tar, extract, and run ./install.sh)
 
-* Initialize Google SDK: Open a new terminal and run `gcloud init` (set project to defcon-workshop and default region to us-west1-a)
+    * Initialize Google SDK: Open a new terminal and run `gcloud init` (set project to defcon-workshop and default region to us-west1-a)
 
 
 ### Windows
 
 * **Install Docker Toolbox (installs virtualbox, Git, etc.)**
 
-https://download.docker.com/win/stable/DockerToolbox.exe
+    https://download.docker.com/win/stable/DockerToolbox.exe
 
 * **Install Minikube**
     * Download this file [https:storage.googleapis.com/minikube/releases/latest/minikube-windows-amd64.exe](https://storage.googleapis.com/minikube/releases/latest/minikube-windows-amd64.exe) and rename it to minikube.exe
