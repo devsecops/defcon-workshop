@@ -58,7 +58,7 @@ In this section,
 
 
 ## Using Attack Host to exploit
-1. SSH into the attackhost container by typing - `kubectl exec -it <pod-name> bash`.  You can get the name of the pod by running `kubectl get pods` and search for the attackhost pod name
+1. SSH into the attackhost container by typing - `kubectl exec -it <pod-name> bash`.  You can get the name of the pod by running `kubectl get pods` and search for the attackhost pod name.
 2. Run `jexboss` by typing - `python jexboss.py -u <URL>` for both the vulnerable and non-vulnerable JBOSS servers.The URL can be found by navigating to the pods section, clicking on the pod and obtaining the ip address.  the URL will look something like this: `http://10.4.1.5:8080`
 3. Notice the different output and the ease of standing up sandboxed environments for security testing.
 
