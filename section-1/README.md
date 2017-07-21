@@ -50,9 +50,11 @@ https://cloud.google.com/sdk/docs/quickstart-mac-os-x (download tar, extract, an
 ### Windows
 
 * Install Docker Toolbox (installs virtualbox, Git, etc.)
+
 https://download.docker.com/win/stable/DockerToolbox.exe
 
 * Install Minikube
+
 Download this file [minikube-windows-amd64.exe](https://storage.googleapis.com/minikube/releases/latest/minikube-windows-amd64.exe) and rename it to minikube.exe
 Place it in your Program Files directory under Minikube
 Add the folder to your PATH by right clicking on the Windows icon in the lower left hand side, clicking System, then clicking on Advanced system settings in the left hand pane
@@ -61,11 +63,13 @@ Add the following to the end: `;C:\Program Files\Minikube`
 Now when you open a command prompt and type minikube it should run using the file in that directory
 
 * Install Google SDK and KubeCtl
+
 Download and run the SDK from here: https://dl.google.com/dl/cloudsdk/channels/rapid/GoogleCloudSDKInstaller.exe
 Uncheck all of the boxes and click finish
 Restart your command prompt and then type: `gcloud components install kubectl`
 
 * Install the GO programming language
+
 https://storage.googleapis.com/golang/go1.8.3.windows-amd64.msi
 
 Note: If any of the tools above don’t seem like they’re working in a command prompt after installation, try closing your prompt and opening a new one.  The tool should then work.
