@@ -11,6 +11,10 @@ In this section,
 
 
 ## Stand up vulnerable and non-vulnerable JBOSS servers
+* We'll need to deploy another cluster.  Type `gcloud alpha container clusters create remote-cluster --enable-kubernetes-alpha --scopes bigquery,storage-rw,compute-ro,https://www.googleapis.com/auth/pubsub` Once its complete it will display the name and zone the cluster is in.
+
+* Now we'll need to switch contexts to your GCP projects' new cluster.  type `kubectl config get-contexts` to display a list of clusters you can connect to and then type `kubectl config set-context <name of GCP cluster>` Be sure to choose the correct cluster by matching the name and zone from the steps above.
+
 * Finding a pre-built docker image
     * On your local machine type `docker search jboss`
     * We'll be using `tutum/jboss`
@@ -20,24 +24,24 @@ In this section,
 
 * Getting the image ready to push to GCP
     * Once the image is pulled down you're going to want to tag the image to get it ready for GCP.  Type `docker images` to get a list of your local images.  Copy the Image ID of the tutum/jboss images with the tag of *latest* and type the following command `docker tag <Image ID> us.gcr.io/<project name>/jboss-latest` replacing the image id and project name with that of your own.  Now if you type `docker images` you should see your newly tagged images ready for GCP
-    * Repeat the step above for the as6 version labeling it `jboss-vulnerable`
-    * Now we have to upload the images to the container registry in GCP. Type the following command to upload the newly tagged image to GCP: `gcloud docker -- push us.gcr.io/<project name>/vuln-jboss:vuln-as6` and `gcloud docker -- push us.gcr.io/<project name>/jboss-latest:latest` everything after the colon designates the version in the container registry.
+    * Repeat the step above for the as6 version labeling it `jboss-vulnerable:as6`
+    * Now we have to upload the images to the container registry in GCP. Type the following command to upload the newly tagged image to GCP: `gcloud docker -- push us.gcr.io/<project name>/jboss-vulnerable:as6` and `gcloud docker -- push us.gcr.io/<project name>/jboss-latest:latest` everything after the colon designates the version in the container registry.
 
 
 * Starting the servers
-    * Now that the images are in the container registry on GCP, we'll want to start them up and expose the proper ports.  To do that issue the following commands: `kubectl run jboss-latest --image=us.gcr.io/<project name>/jboss-latest --port=8080` and `kubectl run vuln-jboss --image=us.gcr.io/<project name>/vuln-jboss --port=8080`
+    * Now that the images are in the container registry on GCP, we'll want to start them up and expose the proper ports.  To do that issue the following commands: `kubectl run jboss-latest --image=us.gcr.io/<project name>/jboss-latest --port=8080` and `kubectl run vuln-jboss --image=us.gcr.io/<project name>/jboss-vulnerable:as6 --port=8080`
 
 ## Stand up Attack Host with exploit tools
 1. From the `attackhost` directory, type
-    * docker build -t us.gcr.io/defcon-workshop/attackhost .
-    * gcloud docker -- push us.gcr.io/defcon-workshop/attackhost
+    * `docker build -t us.gcr.io/defcon-workshop/attackhost .`
+    * `gcloud docker -- push us.gcr.io/<project name>/attackhost`
 2. Navigate to Google Container Registry and verify the image exists.
-3. Start the attackhost deployment by typing - `kubectl apply -f attack-host.yaml`.
+3. Start the attackhost deployment by typing - `kubectl apply -f attack-host.yaml`
 
 
 ## Using Attack Host to exploit
-1. SSH into the attackhost container by typing - `kubectl exec -it <pod-name> bash`.
-2. Run `jexboss` by typing - `python jexboss.py -u <URL>` for both the vulnerable and non-vulnerable JBOSS servers.
+1. SSH into the attackhost container by typing - `kubectl exec -it <pod-name> bash`
+2. Run `jexboss` by typing - `python jexboss.py -u <URL>` for both the vulnerable and non-vulnerable JBOSS servers.The URL can be found by navigating to the pods section, clicking on the pod and obtaining the ip address.  the URL will look something like this: `http://10.4.1.5:8080`
 3. Notice the different output and the ease of standing up sandboxed environments for security testing.
 
 
@@ -62,11 +66,16 @@ In this section,
 
 ### Running on a K8S cluster
 Running the tools repo-supervisor and wfuzz
-1. `go run scripts/main.go -project <PROJECTID> -gac <GACCREDS> -wfdataset wfuzzds -wftable wfuzz_tomcat_test -rsdataset reposupervisords -rstable reposupervisor_test` - This will re-create the dataset and tables.
-2. `kubectl create secret generic googlesecret --from-file=$(CREDS_FILEPATH)` - Create a secret with the value of the secret being the JSON credentials file downloaded above. We need this because the containers on the cluster need to authenticate to our K8S cluster to be able to create anything. We don't do this locally because our gcloud environment, by default, is already configured when we first set it up but we need it when running on a K8S cluster
-3. `kubectl get secrets` - Verify the secret was created
-4. Make sure the environment values in the `deployments/tools-bq-pod.yaml` deployment file are accurate
-5. `kubectl apply -f deployments/tools-bq-pod.yaml`
+1. Replace the directory path `/path/where/gac/is/stored/` in the command below to the path where GAC credentials file is stored locally on your workstation. Replace the `PROJECTID` as well. Replace the `gacfilename` with the name of the GAC credentials file.
+
+`docker run -it -v /path/where/gac/is/stored/:/tmp/data/ abhartiya/utils_bqps:v1 -project <PROJECTID> -gac /tmp/data/<gacfilename> -wfdataset wfuzzds -wftable wfuzz_tomcat_test -rsdataset reposupervisords -rstable reposupervisor_test`
+
+2. The above command will mount the local directory where you stored your GAC credentials file to `/tmp/data` inside the container. Once, it does that, it will run the `abhartiya/utils_bqps:v1` container with the arguments - `-project defcon-workshop -gac /tmp/data/<gacfilename> -wfdataset wfuzzds -wftable wfuzz_tomcat_test -rsdataset reposupervisords -rstable reposupervisor_test`. Once the container runs, it will re-create the dataset and tables.
+
+3. `kubectl create secret generic googlesecret --from-file=$(CREDS_FILEPATH)` - Create a secret with the value of the secret being the JSON credentials file downloaded above. We need this because the containers on the cluster need to authenticate to our K8S cluster to be able to create anything. We don't do this locally because our gcloud environment, by default, is already configured when we first set it up but we need it when running on a K8S cluster
+4. `kubectl get secrets` - Verify the secret was created
+5. Make sure the environment values in the `deployments/tools-bq-pod.yaml` deployment file are accurate
+6. `kubectl apply -f deployments/tools-bq-pod.yaml`
 
 Running the wfuzz basic authN bruteforcer
 1. Make sure the environment values in the `deployments/tools-wfbrute-pod.yaml` deployment file are accurate

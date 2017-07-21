@@ -1,11 +1,12 @@
 package main
 
 import (
-	"context"
 	"flag"
 	"fmt"
 	"log"
 	"os"
+
+	"golang.org/x/net/context"
 
 	"golang.org/x/oauth2"
 
@@ -131,7 +132,7 @@ func main() {
 				fmt.Println(*topic + " created")
 			}
 
-			newSub, err := psClient.CreateSubscription(ctx, *subscription, newTopic, 0, nil)
+			newSub, err := psClient.CreateSubscription(ctx, *subscription, pubsub.SubscriptionConfig{Topic: newTopic})
 			check(err)
 
 			newsubExists, err := newSub.Exists(ctx)
