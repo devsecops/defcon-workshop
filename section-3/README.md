@@ -70,7 +70,7 @@ GROUP BY ip, port
 
 ## Running Cronjobs
 
-1. `kubectl apply -f deployments/nmap-cronjob.yaml` - Start the cronjob
+1. `kubectl apply -f deployments/nmap-cronjob.yaml --validate=false` - Start the cronjob
 2. `kubectl get cronjobs --watch` - Watch the status of the cronjob
 
 ## Cleanup
