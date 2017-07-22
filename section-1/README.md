@@ -57,19 +57,26 @@ In this section, we will:
     * if you're using Kali, use the install script [kali-install-docker.sh](./kali-install-docker.sh). 
     * Unfortunately, this [script] only works for x64 Kali builds. 
 
+* **Install Google Cloud SDK**
+
+    https://cloud.google.com/sdk/docs/quickstart-mac-os-x (download tar, extract, and run ./install.sh)
+
+    * Initialize Google SDK: Open a new terminal and run `gcloud init` (set project to defcon-workshop and default region to us-west1-a)
+    
+    Google Cloud SDK 163.0.0
+
 * **Install Minikube:**
 
-    https://kubernetes.io/docs/tasks/tools/install-minikube/
+    https://github.com/kubernetes/minikube
 
-    ```
-    curl -Lo minikube https://storage.googleapis.com/minikube/releases/v0.19.1/minikube-darwin-amd64 && chmod +x minikube && sudo mv minikube /usr/local/bin/
-    ```
+    minikube version: v0.20.0
 
 * **Install Kubectl:**
 
-    ```
-    curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/darwin/amd64/kubectl && chmod +x ./kubectl && sudo mv ./kubectl /usr/local/bin/kubectl
-    ```
+Install kubectl via the GCLOUD SDK - `gcloud components install kubectl`
+
+Client Version: version.Info{Major:"1", Minor:"7", GitVersion:"v1.7.0", GitCommit:"d3ada0119e776222f11ec7945e6d860061339aad", GitTreeState:"clean", BuildDate:"2017-06-29T23:15:59Z", GoVersion:"go1.8.3", Compiler:"gc", Platform:"darwin/amd64"}
+Server Version: version.Info{Major:"1", Minor:"6", GitVersion:"v1.6.4", GitCommit:"d6f433224538d4f9ca2f7ae19b252e6fcb66a3ae", GitTreeState:"dirty", BuildDate:"2017-06-22T04:31:09Z", GoVersion:"go1.7.5", Compiler:"gc", Platform:"linux/amd64"}
 
 * **Install Virtualbox**
 
@@ -85,12 +92,7 @@ In this section, we will:
 
     https://golang.org/dl/ (download and install .pkg)
 
-* **Install Google Cloud SDK**
-
-    https://cloud.google.com/sdk/docs/quickstart-mac-os-x (download tar, extract, and run ./install.sh)
-
-    * Initialize Google SDK: Open a new terminal and run `gcloud init` (set project to defcon-workshop and default region to us-west1-a)
-
+    go version go1.8.3 darwin/amd64
 
 ### Windows
 
