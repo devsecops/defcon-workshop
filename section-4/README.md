@@ -67,6 +67,7 @@ In this section,
 1. Delete all the deployments by typing - `kubectl delete deployments --all`
 2. Delete all the pods by typing - `kubectl delete pods --all`
 
+## Switch context back to minikube
 
 ## Introducing Target, Attack Surface and Automated Testing Methodology
 1. Domain:
