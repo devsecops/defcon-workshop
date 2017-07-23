@@ -9,7 +9,8 @@
     - [Installation / Setting up](#installation--setting-up)
         - [Requirements](#requirements)
         - [Google Cloud Platform (GCP) account](#google-cloud-platform-gcp-account)
-        - [MacOS/Linux](#macoslinux)
+        - [MacOS](#macos)
+        - [Linux](#linux)
         - [Windows](#windows)
     - [Building the first Docker image](#building-the-first-docker-image)
         - [Linux/Mac](#linuxmac)
@@ -21,14 +22,15 @@
 
 <!-- /TOC -->
 
+
 ## Overview
 In this section, we will:
 1. Install and set up our environment for the workshop.
 2. Build our first Docker image.
 3. Push our Docker image to Google Container Registry (GCR).
 
-## Installation / Setting up
 
+## Installation / Setting up
 ### Requirements
 1. Google Cloud Platform (GCP) account
 2. Docker
@@ -39,60 +41,87 @@ In this section, we will:
 7. Virtualenv
 8. GoLang
 
+
 ### Google Cloud Platform (GCP) account
 * You can use the GCP Free Tier to get one
     https://cloud.google.com/free/
 
+* Go to `https://console.developers.google.com/apis` and enable `Compute Engine API`.
 
-### MacOS/Linux
 
-* **Install Xcode from app store (this will install Git so you can clone the repo)**
+### MacOS
+1. **Please install Homebrew if you don't already have it**
 
-* **Install Docker**
+    * `/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"`
+    * python -V should say `Python 2.7.10`
 
-    https://www.docker.com/products/docker-toolbox
+2. **Install Docker**
 
-    https://docs.docker.com/docker-for-mac/install/#download-docker-for-mac
+    * Navigate to [Docker for mac](https://docs.docker.com/docker-for-mac/install/#download-docker-for-mac) and `Get Docker for Mac (Stable)`
+    * Type `docker version` and the output should look like below:
 
+![docker version](imgs/dockerversion.png)
+
+3. **Install Google Cloud SDK**
+
+    * Navigate to [Google Cloud SDK](https://cloud.google.com/sdk/docs/quickstart-mac-os-x)
+    * Download the tarball, extract it, and run ./install.sh
+    * Initialize Google SDK: Open a new terminal and run `gcloud init`
+    * Choose your project and the set the region to `us-west1` and zone to `us-west1-a`
+    * Type `gcloud version` and this is what it should look like:
+
+```
+Google Cloud SDK 163.0.0
+bq 2.0.24
+core 2017.07.17
+gcloud
+gsutil 4.27
+```
+
+4. **Install Minikube:**
+
+    * Type `brew cask install minikube`
+    * Type `minikube version` and it should say `minikube version: v0.20.0`
+
+5. **Install Kubectl:**
+
+    * Install kubectl via the GCLOUD SDK - `gcloud components install kubectl`
+
+6. **Install Virtualbox**
+
+    * Navigate to [Virtualbox](https://www.virtualbox.org/wiki/Downloads)
+    * Download for `OS X hosts` - version 5.1.24
+    * Type `minikube start` and then `kubectl version`. It should look like below:
+
+![kubectl version](imgs/kubectlversion.png)
+
+7.  **Install Virtualenv**
+
+    * If you don't already have pip, type `sudo easy_install pip`
+    * Install virtualenv by typing `sudo pip install virtualenv`
+
+Reference: [link](https://virtualenv.pypa.io/en/stable/installation/)
+
+8. **Install the GO programming language**
+
+    * Install GOLANG with Homebrew by typing `brew install go --cross-compile-common`
+    * go version should say `go version go1.8.3 darwin/amd64`
+    * Setting your GOPATH:
+        * `mkdir $HOME/go`
+        * `export GOPATH=$HOME/go`
+        * `open $HOME/.bash_profile` and adding `export GOPATH=$HOME/go` and `export PATH=$PATH:$GOPATH/bin`. Save the file.
+
+Reference: [link](http://www.golangbootcamp.com/book/get_setup)
+
+
+### Linux
+
+https://www.docker.com/products/docker-toolbox
     * if you're using Kali, use the install script [kali-install-docker.sh](./kali-install-docker.sh).
     * Unfortunately, this [script] only works for x64 Kali builds.
 
-* **Install Google Cloud SDK**
+https://github.com/kubernetes/minikube
 
-    https://cloud.google.com/sdk/docs/quickstart-mac-os-x (download tar, extract, and run ./install.sh)
-
-    * Initialize Google SDK: Open a new terminal and run `gcloud init` (set project to defcon-workshop and default region to us-west1-a)
-
-    Google Cloud SDK 163.0.0
-
-* **Install Minikube:**
-
-    https://github.com/kubernetes/minikube
-
-    minikube version: v0.20.0
-
-* **Install Kubectl:**
-
-Install kubectl via the GCLOUD SDK - `gcloud components install kubectl`
-
-Client Version: version.Info{Major:"1", Minor:"7", GitVersion:"v1.7.0", GitCommit:"d3ada0119e776222f11ec7945e6d860061339aad", GitTreeState:"clean", BuildDate:"2017-06-29T23:15:59Z", GoVersion:"go1.8.3", Compiler:"gc", Platform:"darwin/amd64"}
-Server Version: version.Info{Major:"1", Minor:"6", GitVersion:"v1.6.4", GitCommit:"d6f433224538d4f9ca2f7ae19b252e6fcb66a3ae", GitTreeState:"dirty", BuildDate:"2017-06-22T04:31:09Z", GoVersion:"go1.7.5", Compiler:"gc", Platform:"linux/amd64"}
-
-* **Install Virtualbox**
-
-    https://www.virtualbox.org/wiki/Downloads
-
-
-* **Install Virtualenv**
-
-    https://virtualenv.pypa.io/en/stable/installation/
-
-
-* **Install the GO programming language**
-
-    https://golang.org/dl/ (download and install .pkg)
-
-    go version go1.8.3 darwin/amd64
 
 ### Windows
 
