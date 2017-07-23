@@ -17,7 +17,7 @@
     - [Pushing the Docker image to Google Container Registry (GCR)](#pushing-the-docker-image-to-google-container-registry-gcr)
         - [Linux/Mac](#linuxmac-1)
         - [Windows](#windows-2)
-    - [References:](#references)
+    - [References](#references)
 
 <!-- /TOC -->
 
@@ -32,14 +32,14 @@ In this section, we will:
 ### Requirements
 1. Google Cloud Platform (GCP) account
 2. Docker
-3. Minikube
-4. kubectl 
-5. VirtualBox
-6. Virtualenv
-7. GoLang
-8. Google Cloud SDK
+3. Google Cloud SDK
+4. Minikube
+5. kubectl
+6. VirtualBox
+7. Virtualenv
+8. GoLang
 
-### Google Cloud Platform (GCP) account 
+### Google Cloud Platform (GCP) account
 * You can use the GCP Free Tier to get one
     https://cloud.google.com/free/
 
@@ -54,15 +54,15 @@ In this section, we will:
 
     https://docs.docker.com/docker-for-mac/install/#download-docker-for-mac
 
-    * if you're using Kali, use the install script [kali-install-docker.sh](./kali-install-docker.sh). 
-    * Unfortunately, this [script] only works for x64 Kali builds. 
+    * if you're using Kali, use the install script [kali-install-docker.sh](./kali-install-docker.sh).
+    * Unfortunately, this [script] only works for x64 Kali builds.
 
 * **Install Google Cloud SDK**
 
     https://cloud.google.com/sdk/docs/quickstart-mac-os-x (download tar, extract, and run ./install.sh)
 
     * Initialize Google SDK: Open a new terminal and run `gcloud init` (set project to defcon-workshop and default region to us-west1-a)
-    
+
     Google Cloud SDK 163.0.0
 
 * **Install Minikube:**
@@ -151,6 +151,6 @@ Note: If any of the tools above don’t seem like they’re working in a command
 ### Windows
 * `gcloud docker -- push us.gcr.io/%project_id%/test:v1`
 
-## References:
+## References
 - https://gist.github.com/nikallass/e5124756d0e2bdcf8981827f3ed40bcc
 - https://gist.github.com/apolloclark/f0e3974601346883c731
