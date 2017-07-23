@@ -6,24 +6,24 @@
 
 The above command will mount the local directory where you stored your GAC credentials file to `/tmp/data` inside the container. Once, it does that, it will run the `abhartiya/utils_bqps:v1` container with the arguments - `-project defcon-workshop -gac /tmp/data/<gacfilename> -wfdataset wfuzzds -wftable wfuzz_tomcat_test -rsdataset reposupervisords -rstable reposupervisor_test`. Once the container runs, the following will happen:
 
-    * A BiqQuery dataset `wfuzzds` and an empty table `wfuzz_tomcat_test` in Google BigQuery will be created to store the processed wfuzz results with the following schema (all nullable):
+* A BiqQuery dataset `wfuzzds` and an empty table `wfuzz_tomcat_test` in Google BigQuery will be created to store the processed wfuzz results with the following schema (all nullable):
 
-    ```
-    ID:string
-    Response:string
-    Lines:string
-    Word:string
-    Chars:string
-    Request:string
-    Success:string
-    ```
+```
+ID:string
+Response:string
+Lines:string
+Word:string
+Chars:string
+Request:string
+Success:string
+```
 
-    * A BigQuery dataset `reposupervisords` and an empty table `reposupervisor_test` in Google BigQuery will be created to store the processed git-all-secrets results with the following schema (all nullable):
+* A BigQuery dataset `reposupervisords` and an empty table `reposupervisor_test` in Google BigQuery will be created to store the processed git-all-secrets results with the following schema (all nullable):
 
-    ```
-    File:string
-    Secret:string
-    ```
+```
+File:string
+Secret:string
+```
 
 2. `cd` into the `data-converter` directory.
 
