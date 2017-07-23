@@ -60,7 +60,7 @@ In this section, we will:
     * Navigate to [Docker for mac](https://docs.docker.com/docker-for-mac/install/#download-docker-for-mac) and `Get Docker for Mac (Stable)`
     * Type `docker version` and the output should look like below:
 
-![docker version](imgs/dockerversion.png)
+![docker version](imgs/docker-version.png)
 
 3. **Install Google Cloud SDK**
 
@@ -93,7 +93,7 @@ gsutil 4.27
     * Download for `OS X hosts` - version 5.1.24
     * Type `minikube start` and then `kubectl version`. It should look like below:
 
-![kubectl version](imgs/kubectlversion.png)
+![kubectl version](imgs/kubectl-version.png)
 
 7.  **Install Virtualenv**
 
