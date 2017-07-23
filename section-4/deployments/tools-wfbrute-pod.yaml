@@ -11,7 +11,7 @@ spec:
     imagePullPolicy: IfNotPresent
     env:
     - name: PROJECT_ID
-      value: ""
+      value: "<project-id>"
     - name: RS_DATASET_NAME
       value: "reposupervisords"
     - name: RS_TABLE_NAME
@@ -21,12 +21,12 @@ spec:
     - name: WF_TABLE_NAME
       value: "wfuzz_tomcat_test"
     - name: GOOGLE_APPLICATION_CREDENTIALS
-      value: "/secretstore/defcon-workshop-b071569e3eec.json"
+      value: "/secretstore/<gac-filename>"
     args:
     - -target
-    - ""
+    - "104.198.4.57"
     - -slackHook
-    - ""
+    - "https://hooks.slack.com/services/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"
     volumeMounts:
     - name: secretstore
       mountPath: /secretstore

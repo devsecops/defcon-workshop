@@ -54,7 +54,7 @@ Reference: [link](https://developers.google.com/identity/protocols/application-d
 7. `python scripts/listenfromsub.py` - Listening for that message from the subscription
 8. `python scripts/deletetopicandsub.py` - Deleting the topic and subscription
 
-References: [link](https://cloud.google.com/pubsub/docs/reference/libraries#client-libraries-install-python)
+Reference: [link](https://cloud.google.com/pubsub/docs/reference/libraries#client-libraries-install-python)
 
 ## Convert NMAP data into BigQuery ingest-able format using a Data Converter
 

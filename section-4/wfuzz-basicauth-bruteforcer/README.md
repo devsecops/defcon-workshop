@@ -1,14 +1,16 @@
 # Basic Authentication Bruteforcing of WFUZZ endpoints with secrets obtained from Repo-Supervisor
 
-## Running Locally
-* Complete the `.env.sample` file in the `wfuzz-basicauth-bruteforcer` folder with the appropriate values and rename it to `.env`.
+1. `cd` into the `wfuzz-basicauth-bruteforcer` directory.
 
-* `virtualenv env`
+2. Complete the `.env.sample` file in the `wfuzz-basicauth-bruteforcer` directory with the appropriate values and copy it to `.env`.
 
-* `. env/bin/activate`
+3. Activate the virtual environment and install `pycurl`:
+    * `virtualenv env`
+    * `. env/bin/activate`
+    * `pip install pycurl`
 
-* `pip install pycurl`
+4. Now, in order to bruteforce the basic authentication mechanism with the data retrieved from `wfuzz` and `git-all-secrets`, type `go run bruteforce.go -target 104.198.4.57 -slackHook https://hooks.slack.com/services/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`.
 
-* Now, in order to bruteforce the basic authentication mechanism with the data retrieved from `wfuzz` and `repo-supervisor`, type `go run bruteforce.go -target <> -slackHook <>`
+5. Come out of the virtual environment by typing `deactivate`.
 
-* `deactivate`
+6. We should get back some results in Slack.

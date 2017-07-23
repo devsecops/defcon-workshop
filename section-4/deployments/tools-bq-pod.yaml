@@ -11,13 +11,13 @@ spec:
     imagePullPolicy: IfNotPresent
     env:
     - name: PROJECT_ID
-      value: "defcon-workshop"
+      value: "<project-id>"
     - name: RS_DATASET_NAME
       value: "reposupervisords"
     - name: RS_TABLE_NAME
       value: "reposupervisor_test"
     - name: GOOGLE_APPLICATION_CREDENTIALS
-      value: "/secretstore/defcon-workshop-b071569e3eec.json"
+      value: "/secretstore/<gac-filename>"
     args:
     - -toolName
     - repo-supervisor
@@ -34,9 +34,9 @@ spec:
       imagePullPolicy: IfNotPresent
       args:
       - -token
-      - <>
+      - <git-personal-access-token>
       - -org
-      - secretorg123
+      - kubebot
       - -toolName
       - repo-supervisor
       - -output
@@ -65,13 +65,13 @@ spec:
     imagePullPolicy: IfNotPresent
     env:
     - name: PROJECT_ID
-      value: "defcon-workshop"
+      value: "<project-id>"
     - name: WF_DATASET_NAME
       value: "wfuzzds"
     - name: WF_TABLE_NAME
       value: "wfuzz_tomcat_test"
     - name: GOOGLE_APPLICATION_CREDENTIALS
-      value: "/secretstore/defcon-workshop-b071569e3eec.json"
+      value: "/secretstore/<gac-filename>"
     args:
     - -toolName
     - wfuzz
@@ -93,7 +93,7 @@ spec:
       - 404,429,400
       - -o
       - csv
-      - http://<>/FUZZ/
+      - http://104.198.4.57/FUZZ/
       - /tmp/results/results.csv
       volumeMounts:
       - name: results
