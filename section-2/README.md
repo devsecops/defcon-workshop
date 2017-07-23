@@ -49,7 +49,7 @@ Reference: [link](https://www.redhat.com/en/containers/what-is-kubernetes)
 
 ## Deploying a K8S cluster locally on minikube
 
-1. `minikube start`
+1. `minikube status` and ensure its running. If not, type `minikube start`.
 2. `eval $(minikube docker-env)`
 3. `docker ps -a` - Verify you are inside minikube's docker environment
 4. `kubectl apply -f local-deployment.yaml` - Deploys the local K8S cluster on Minikube
@@ -64,15 +64,14 @@ Reference: [link](https://www.redhat.com/en/containers/what-is-kubernetes)
 
 ## Deploying a K8S cluster remotely on GCP
 
-1. `gcloud components install alpha` - Install google alpha components
+1. `gcloud components install alpha` - Install google alpha components. The version should say `2017.03.24`.
 2. `gcloud alpha container clusters create remote-cluster --enable-kubernetes-alpha --scopes bigquery,storage-rw,compute-ro,https://www.googleapis.com/auth/pubsub` - Creates an alpha K8S cluster with scopes
 3. `gcloud container clusters get-credentials remote-cluster --zone us-west1-a --project $PROJECT_ID` - Connecting to the remote K8S cluster and generating an entry in the `~/.kube/config` file for it
 4. `kubectl get nodes` - Verify you are talking to the remote K8S cluster
-5. `kubectl proxy` - Starts a proxy locally to view the remote K8S dashboard. You can then view the Minikube dashboard by navigating to the URL in the browser. This is the same as typing `minikube dashboard` in the above usecase
-6. `kubectl apply -f remote-deployment.yaml` - Deploys the remote K8S cluster on GCP. Similar commands as above apply here as well
+5. `kubectl proxy` - Starts a proxy locally to view the remote K8S dashboard. You can then view the Minikube dashboard by navigating to `127.0.0.1:8001/ui` in the browser.
+6. Open a new tab in the same terminal and type `kubectl apply -f remote-deployment.yaml`. This deploys the remote K8S cluster on GCP. Similar commands as above apply here as well
 7. `kubectl delete deployments --namespace=remote-server --all` - Deletes the remote deployments in the namespace
 8. `kubectl delete namespace remote-server` - Deletes the namespace
 9. You can kill the `kubectl proxy` as well now.
 
-References:
-* https://kubernetes.io/docs/concepts/workloads/controllers/deployment/
+Reference: [link](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/)
