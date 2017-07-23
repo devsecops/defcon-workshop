@@ -17,18 +17,16 @@
 
 
 ## Overview
-In this section,
-1. We will briefly discuss the various Google Cloud Platform (GCP) web services.
-2. We will cover the basic concepts of [Kubernetes](https://kubernetes.io/).
-3. We will deploy our first Kubernetes (K8S) cluster locally using [Minikube](https://github.com/kubernetes/minikube).
-4. We will deploy our first Kubernetes (K8S) cluster remotely on GCP.
+In this section, we will
+1. Briefly discuss the various Google Cloud Platform (GCP) web services.
+2. Cover the basic concepts of [Kubernetes](https://kubernetes.io/).
+3. Deploy our first Kubernetes (K8S) cluster locally using [Minikube](https://github.com/kubernetes/minikube).
+4. Deploy our first Kubernetes (K8S) cluster remotely on GCP.
 
 
-## GCP Web Services overview
-* Google Compute Engine (GCE) - like AWS EC2.
+## GCP Web Services overview (only the ones we will be using)
 * Google Container Engine (GKE) - Runs containers on a cluster. Entire backend is based on Kubernetes.
 * Google BigQuery - Query large amounts of data real quick. Append only.
-* Google Cloud Storage (GCS) - like AWS S3.
 * Google Container Registry (GCR) - Registry/Repository to store Docker images used in a GCP account
 * Google PubSub - Messaging system. Publisher/Subscription model.
     * Publish messages to a topic
@@ -70,11 +68,11 @@ Reference: [link](https://www.redhat.com/en/containers/what-is-kubernetes)
 2. `gcloud alpha container clusters create remote-cluster --enable-kubernetes-alpha --scopes bigquery,storage-rw,compute-ro,https://www.googleapis.com/auth/pubsub` - Creates an alpha K8S cluster with scopes
 3. `gcloud container clusters get-credentials remote-cluster --zone us-west1-a --project $PROJECT_ID` - Connecting to the remote K8S cluster and generating an entry in the `~/.kube/config` file for it
 4. `kubectl get nodes` - Verify you are talking to the remote K8S cluster
-5. `kubectl proxy` - Starts a proxy locally to view the remote K8S dashboard. You can then view the Minikube dashboard by navigating to `https://192.168.99.100:30000` in the browser. This is the same as typing `minikube dashboard` in the above usecase
+5. `kubectl proxy` - Starts a proxy locally to view the remote K8S dashboard. You can then view the Minikube dashboard by navigating to the URL in the browser. This is the same as typing `minikube dashboard` in the above usecase
 6. `kubectl apply -f remote-deployment.yaml` - Deploys the remote K8S cluster on GCP. Similar commands as above apply here as well
 7. `kubectl delete deployments --namespace=remote-server --all` - Deletes the remote deployments in the namespace
 8. `kubectl delete namespace remote-server` - Deletes the namespace
-9. `gcloud alpha container clusters delete remote-cluster` - Delete the remote K8S cluster
+9. You can kill the `kubectl proxy` as well now.
 
 References:
 * https://kubernetes.io/docs/concepts/workloads/controllers/deployment/

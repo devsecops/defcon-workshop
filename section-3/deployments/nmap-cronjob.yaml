@@ -17,13 +17,13 @@ spec:
             imagePullPolicy: IfNotPresent
             env:
             - name: PROJECT_ID
-              value: "defcon-workshop"
+              value: "<project-id>"
             - name: DATASET_NAME
               value: "nmapds"
             - name: TABLE_NAME
               value: "nmap"
             - name: GOOGLE_APPLICATION_CREDENTIALS
-              value: "/secretstore/defcon-workshop-b071569e3eec.json"
+              value: "/secretstore/<gac-filename>"
             args:
             - /tmp/results/nmap_google.com
             volumeMounts:

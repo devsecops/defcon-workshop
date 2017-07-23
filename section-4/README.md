@@ -103,6 +103,7 @@ Running the wfuzz basic authN bruteforcer
 ### Cleanup
 1. `kubectl delete pods --all`
 2. Delete the BQ datasets and tables
+9. Switch context and `gcloud alpha container clusters delete remote-cluster` - Delete the remote K8S cluster
 
 -------------
 ### Sending a request from Kubebot for a target company
