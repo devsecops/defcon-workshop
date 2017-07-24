@@ -38,7 +38,8 @@ Type `kubectl get nodes` and make sure it says `minikube` to confirm if the cont
 
 ## Running NMAP on the local K8S cluster
 
-* `kubectl apply -f deployments/nmap-deployment.yaml`
+* `cd` into `section-3` directory and type `kubectl apply -f deployments/nmap-deployment.yaml`
+* Delete the deployment by typing - `kubectl delete deployments --all`
 
 ## Google PubSub in action
 Before we could go ahead with this section, we need to make sure we have the correct environment setup. In your GCP cloud console, navigate to `IAM & Admin` -> `Service Accounts`. Create a key for the default Compute Engine Service Account and download the JSON key. Set an environment variable `GOOGLE_APPLICATION_CREDENTIALS` with the value being the location where you save the JSON key.
@@ -49,7 +50,7 @@ Reference: [link](https://developers.google.com/identity/protocols/application-d
 2. `. env/bin/activate`
 3. `pip install --upgrade google-cloud-pubsub`
 4. `gcloud config list` - Verify your account, project and active configuration are correctly setup
-5. `python scripts/createtopicandsub.py` - Creating the topic and subscription
+5. `python scripts/createtopicandsub.py` - Creating the topic and subscription. Verify that the topic and subscription were created by navigating to the GCP Cloud console and then `Pub/Sub`.
 6. `python scripts/sendtotopic.py` - Sending the message to the topic
 7. `python scripts/listenfromsub.py` - Listening for that message from the subscription
 8. `python scripts/deletetopicandsub.py` - Deleting the topic and subscription
@@ -68,15 +69,18 @@ protocol:string
 service:string
 version:string
 ```
-2. Run NMAP with the following command - `nmap -Pn -p 1-1000 -oN google_results.nmap google.com`.
-3. Complete the `.env.sample` file in the `data-converter` folder with the appropriate `PROJECT_ID` and copy it to `.env` in the same folder.
+2. Install `NMAP` if you don't already have it and run NMAP with the following command - `nmap -Pn -p 1-1000 -oN google_results.nmap google.com`.
+3. `cd` into the `data-converter` directory. Complete the `.env.sample` file with the appropriate `PROJECT_ID` and copy it to `.env` in the same directory.
 4. In that folder, type `go get cloud.google.com/go/bigquery` and then `go get github.com/subosito/gotenv` and finally `go run dataconvert.go ../google_results.nmap` - This command basically converts the nmap output into a BigQuery ingest-able format (csv) and uploads the data into the `nmap` table of the `nmapds` dataset.
+5. Verify that the data was successfully uploaded to BigQuery by navigating to GCP Cloud console -> BigQuery -> `nmap` table.
 
 ### Running on a local K8S cluster (Minikube)
 1. `kubectl create secret generic googlesecret --from-file=$(CREDS_FILEPATH)` - Create a secret with the value of the secret being the JSON credentials file downloaded above. We need this because the containers on the cluster need to authenticate to our K8S cluster to be able to create anything.
-2. `kubectl get secrets` - Verify the secret was created
-3. Make sure the environment values in the `deployments/nmap-bq-pod.yaml` deployment file are accurate. The following values need to be changed - [PROJECT_ID](https://github.com/devsecops/defcon-workshop/blob/master/section-3/deployments/nmap-bq-pod.yaml#L14) and [GOOGLE_APPLICATION_CREDENTIALS](https://github.com/devsecops/defcon-workshop/blob/master/section-3/deployments/nmap-bq-pod.yaml#L20)
-4. `kubectl apply -f deployments/nmap-bq-pod.yaml`
+2. `kubectl get secrets` - Verify the secret was created.
+3. `cd` back into the `section-3` directory.
+4. Make sure the environment values in the `deployments/nmap-bq-pod.yaml` deployment file are accurate. The following values need to be changed - [PROJECT_ID](https://github.com/devsecops/defcon-workshop/blob/master/section-3/deployments/nmap-bq-pod.yaml#L14) and [GOOGLE_APPLICATION_CREDENTIALS].(https://github.com/devsecops/defcon-workshop/blob/master/section-3/deployments/nmap-bq-pod.yaml#L20)
+5. Now, in order to automate what we did in the section before this i.e. run nmap and then run the data converter to upload the nmap results to BQ all together, type `kubectl apply -f deployments/nmap-bq-pod.yaml`
+6. Verify that there are new rows in the BQ table now after the Pod completes running.
 
 Reference: [link](https://github.com/maaaaz/nmaptocsv)
 
@@ -92,15 +96,14 @@ GROUP BY ip, port
 
 ## Running Cronjobs
 
-1. `kubectl apply -f deployments/nmap-cronjob.yaml` - Start the cronjob
-2. `kubectl get cronjobs --watch` - Watch the status of the cronjob
-3. Whenever the cronjob kicks in, type `minikube dashboard` and notice how a new job appears, runs and terminates. You can also refresh the BigQuery table to verify new rows are added on every run.
+1. Make sure the environment values in the `deployments/nmap-cronjob.yaml` deployment file are accurate.
+2. `kubectl apply -f deployments/nmap-cronjob.yaml` - Start the cronjob
+3. `kubectl get cronjobs --watch` - Watch the status of the cronjob
+4. Whenever the cronjob kicks in, type `minikube dashboard` and notice how a new job appears, runs and terminates. You can also refresh the BigQuery table to verify new rows are added on every run.
 
 ## Cleanup
-1. `kubectl delete secret googlesecret`
-2. Delete the BigQuery dataset `nmapds` and table `nmap`
-3. `kubectl delete pods --all`
-4. `kubectl delete deployments --all`
-5. `kubectl delete cronjobs --all`
-6. `kubectl delete jobs --all`
-7. `deactivate` to come out of the virtualenv
+1. `kubectl delete cronjobs --all`
+2. `kubectl delete pods --all`
+3. `kubectl delete jobs --all`
+4. `bq rm nmapds.nmap` and `bq rm -r -f nmapds` - Delete the BigQuery dataset `nmapds` and table `nmap`
+5. `deactivate` to come out of the virtualenv
