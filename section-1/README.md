@@ -114,7 +114,7 @@ Reference: [link](https://virtualenv.pypa.io/en/stable/installation/)
 Reference: [link](http://www.golangbootcamp.com/book/get_setup)
 
 
-### Linux
+### Linux (Ubuntu 16.04.2 LTS)
 
 https://www.docker.com/products/docker-toolbox
     * if you're using Kali, use the install script [kali-install-docker.sh](./kali-install-docker.sh).
