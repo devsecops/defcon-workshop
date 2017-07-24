@@ -11,6 +11,6 @@ spec:
     spec:
       containers:
       - name: attackhost
-        image: us.gcr.io/defcon-workshop/attackhost
+        image: us.gcr.io/<PROJECT_ID>/attackhost
         ports:
         - containerPort: 80

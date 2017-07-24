@@ -48,19 +48,22 @@ In this section, we will
     * `docker build -t us.gcr.io/$PROJECT_ID/attackhost .`
     * `gcloud docker -- push us.gcr.io/$PROJECT_ID/attackhost`
 2. Navigate to Google Container Registry and verify the image exists.
-3. Start the attackhost deployment by typing - `kubectl apply -f attack-host.yaml`
+3. Make sure the `PROJECT_ID` is correct in the `attack-host.yaml` file
+4. Start the attackhost deployment by typing - `kubectl apply -f attack-host.yaml`
 
 
 ## Using Attack Host to exploit
 1. SSH into the attackhost container by typing - `kubectl exec -it <pod-name> bash`.  You can get the name of the pod by running `kubectl get pods` and searching for the attackhost pod name.
 2. Run `jexboss` by typing - `python jexboss.py -u <URL>` for both the vulnerable and non-vulnerable JBOSS servers.The URL can be found by navigating to the pods section, clicking on the pod and obtaining the ip address.  the URL will look something like this: `http://10.4.1.5:8080`
 3. Notice the different output and the ease of standing up sandboxed environments for security testing.
+4. Exit out of the attack host.
 
 
 ## Destroying the environment
 1. Delete all the deployments by typing - `kubectl delete deployments --all`
 2. Delete all the pods by typing - `kubectl delete pods --all`
 3. Deleting the remote K8S cluster on GKE - `gcloud alpha container clusters delete remote-cluster`
+4. Remove all the images from GCR.
 
 
 ## Switching context to minikube
@@ -89,8 +92,8 @@ Running the tools repo-supervisor and wfuzz
 
 The above command will mount the local directory where you stored your GAC credentials file to `/tmp/data` inside the container. Once, it does that, it will run the `abhartiya/utils_bqps:v1` container with the arguments - `-project defcon-workshop -gac /tmp/data/<gacfilename> -wfdataset wfuzzds -wftable wfuzz_tomcat_test -rsdataset reposupervisords -rstable reposupervisor_test`. Once the container runs, it will re-create the dataset and tables.
 
-2. `kubectl create secret generic googlesecret --from-file=$(CREDS_FILEPATH)` - Create a secret with the value of the secret being the JSON credentials file downloaded above. We need this because the containers on the cluster need to authenticate to our K8S cluster to be able to create anything.
-3. `kubectl get secrets` - Verify the secret was created.
+2. `kubectl get secrets` - Verify the secret `googlesecret` created earlier still exists.
+3. `cd` back into the `section-4` directory.
 4. Make sure the environment values in the `deployments/tools-bq-pod.yaml` deployment file are accurate.
 5. Start the pods by typing `kubectl apply -f deployments/tools-bq-pod.yaml`.
 
@@ -100,8 +103,15 @@ Running the wfuzz basic authN bruteforcer
 
 ### Cleanup
 1. `kubectl delete pods --all`
-2. Delete the BQ datasets and tables
-9. `minikube delete`
+2. `kubectl delete secrets --all`
+3. Delete the BQ datasets and tables
+    * `bq rm reposupervisords.reposupervisor_test`
+    * `bq rm wfuzzds.wfuzz_tomcat_test`
+    * `bq rm -r -f reposupervisords`
+    * `bq rm -r -f wfuzzds`
+4. `minikube delete`
+5. Don't forget to shutdown your GCP project if you don't plan to use it anymore.
+
 
 ### Demo - Sending a request from Kubebot for a target company
 1. Initiate a request from Slack by typing a command like `/runautomation wfuzzbasicauthbrute|defcon.kubebot.io`.
