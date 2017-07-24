@@ -11,8 +11,6 @@
     - [Running NMAP on the local K8S cluster](#running-nmap-on-the-local-k8s-cluster)
     - [Google PubSub in action](#google-pubsub-in-action)
     - [Convert NMAP data into BigQuery ingest-able format using a Data Converter](#convert-nmap-data-into-bigquery-ingest-able-format-using-a-data-converter)
-        - [Running Locally](#running-locally)
-        - [Running on a K8S cluster](#running-on-a-k8s-cluster)
     - [Querying BigQuery](#querying-bigquery)
     - [Running Cronjobs](#running-cronjobs)
     - [Cleanup](#cleanup)
@@ -39,6 +37,7 @@ Type `kubectl get nodes` and make sure it says `minikube` to confirm if the cont
 ## Running NMAP on the local K8S cluster
 
 * `cd` into `section-3` directory and type `kubectl apply -f deployments/nmap-deployment.yaml`
+* Navigate to the minikube dashboard and notice that we just ran nmap against google. Check the deployment logs!
 * Delete the deployment by typing - `kubectl delete deployments --all`
 
 ## Google PubSub in action
@@ -78,9 +77,13 @@ version:string
 1. `kubectl create secret generic googlesecret --from-file=$(CREDS_FILEPATH)` - Create a secret with the value of the secret being the JSON credentials file downloaded above. We need this because the containers on the cluster need to authenticate to our K8S cluster to be able to create anything.
 2. `kubectl get secrets` - Verify the secret was created.
 3. `cd` back into the `section-3` directory.
-4. Make sure the environment values in the `deployments/nmap-bq-pod.yaml` deployment file are accurate. The following values need to be changed - [PROJECT_ID](https://github.com/devsecops/defcon-workshop/blob/master/section-3/deployments/nmap-bq-pod.yaml#L14) and [GOOGLE_APPLICATION_CREDENTIALS].(https://github.com/devsecops/defcon-workshop/blob/master/section-3/deployments/nmap-bq-pod.yaml#L20)
+4. Make sure the environment values in the `deployments/nmap-bq-pod.yaml` deployment file are accurate. The following values need to be changed - [PROJECT_ID](https://github.com/devsecops/defcon-workshop/blob/master/section-3/deployments/nmap-bq-pod.yaml#L14) and [GOOGLE_APPLICATION_CREDENTIALS](https://github.com/devsecops/defcon-workshop/blob/master/section-3/deployments/nmap-bq-pod.yaml#L20).
 5. Now, in order to automate what we did in the section before this i.e. run nmap and then run the data converter to upload the nmap results to BQ all together, type `kubectl apply -f deployments/nmap-bq-pod.yaml`
-6. Verify that there are new rows in the BQ table now after the Pod completes running.
+6. So, what happened?
+    * NMAP ran against google.com
+    * Results were converted into CSV format
+    * CSV was uploaded to Google BigQuery
+7. Verify that there are new rows in the BQ table now after the Pod completes running.
 
 Reference: [link](https://github.com/maaaaz/nmaptocsv)
 
