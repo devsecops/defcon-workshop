@@ -51,6 +51,7 @@ In this section, we will:
 
 
 ### MacOS
+
 1. **Please install Homebrew if you don't already have it**
 
     * `/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"`
@@ -117,7 +118,75 @@ Reference: [link](http://www.golangbootcamp.com/book/get_setup)
 
 ### Linux (Ubuntu 16.04.2 LTS)
 
+Download a pre-built image from [link](). If you want to manually go over the installation, please follow along. These instructions will work on a bare metal Ubuntu 16.04.2 LTS:
 
+1.  **Install Git**
+    * `sudo apt install -y git` and then `git clone https://github.com/devsecops/defcon-workshop.git`
+
+2.  **Install and Update**
+    * `sudo apt-get update`
+    * `sudo apt-get install -y linux-image-extra-$(uname -r) linux-image-extra-virtual apt-transport-https ca-certificates curl software-properties-common`
+    * `curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -`
+    * `sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"`
+    * `sudo apt-get update`
+
+3. **Install Docker**
+    * `sudo apt-get install docker-ce`
+    * `sudo groupadd docker`
+    * `sudo usermod -aG docker $USER`
+    * logout completely and log back in. Type `docker run hello-world`
+    * `sudo systemctl enable docker`
+
+Reference: [link](https://docs.docker.com/engine/installation/linux/docker-ce/ubuntu/)
+
+4. **Install Google Cloud SDK**
+    * `export CLOUD_SDK_REPO="cloud-sdk-$(lsb_release -c -s)"`
+    * `echo "deb http://packages.cloud.google.com/apt $CLOUD_SDK_REPO main" | sudo tee -a /etc/apt/sources.list.d/google-cloud-sdk.list`
+    * `curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add -`
+    * `sudo apt-get update && sudo apt-get install google-cloud-sdk`
+    * Download `https://cloud.google.com/sdk/docs/quickstart-linux`, extract it and run `install.sh`
+    * Start a new shell and type `gcloud version`. The output should look like below:
+
+![gcloudlinux](imgs/gcloudlinux.png)
+
+5. **Install VirtualBox**
+    * Navigate to [Virtualbox](https://www.virtualbox.org/wiki/Downloads)
+    * Download for `Linux hosts` - Ubuntu 16.04
+
+6.  **Install Virtualenv**
+    * `sudo apt install python-pip`
+    * `sudo pip install virtualenv`
+
+7. **Install Minikube and Kubectl**
+    * `curl -Lo minikube https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64 && chmod +x minikube`
+    * `curl -Lo kubectl https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl && chmod +x kubectl`
+
+    * `mkdir $HOME/.kube || true`
+    * `touch $HOME/.kube/config`
+    * Open .bashrc and type:
+        * `export MINIKUBE_WANTUPDATENOTIFICATION=false`
+        * `export MINIKUBE_WANTREPORTERRORPROMPT=false`
+        * `export MINIKUBE_HOME=$HOME`
+        * `export CHANGE_MINIKUBE_NONE_USER=true`
+        * `export KUBECONFIG=$HOME/.kube/config`
+    * `sudo -E ./minikube start --vm-driver=none --use-vendored-driver`
+    * `gcloud components install kubectl`
+    * `kubectl version`. It should look like below:
+
+![kubectllinux](imgs/kubectllinux.png)
+
+Reference: [link](https://github.com/kubernetes/minikube#linux-ci-installation-which-supports-running-in-a-vm-example-w-kubectl-installation)
+
+8.  **Install GO programming language**
+    * Download from `https://golang.org/doc/install?download=go1.8.3.linux-amd64.tar.gz`
+    * `sudo tar -C /usr/local -xzf go1.8.3.linux-amd64.tar.gz`
+    * `mkdir $HOME/go`
+    * Open `$HOME/.bashrc` and type:
+        * `export PATH=$PATH:/usr/local/go/bin`
+        * `export GOPATH=$HOME/go`
+        * `export PATH=$PATH:$GOPATH/bin`
+    * Restart the shell
+    * Type `go version`. It should say `go version go1.8.3 linux/amd64`
 
 
 ### Linux (Kali)
@@ -133,26 +202,26 @@ Reference: [link](http://www.golangbootcamp.com/book/get_setup)
 
 4.  **Install Kubectl:**
      * Install kubectl via the GCLOUD SDK - `sudo gcloud components install kubectl`
-     
+
 5.  **Install Pip**
      * `sudo apt-get install python-pip`
 
 6.  **Install Virtualenv**
      * `sudo pip install virtualenv`
-     
+
 7.  **Install VirtualBox**
-     * `sudo apt-get install virtualbox` 
-     
+     * `sudo apt-get install virtualbox`
+
 8.  **Install GO programming language**
      * https://golang.org/doc/install?download=go1.8.3.linux-amd64.tar.gz
 
 ### Windows (not supported)
 
-* **Install Docker Toolbox (installs virtualbox, Git, etc.)**
+1. **Install Docker Toolbox (installs virtualbox, Git, etc.)**
 
     https://download.docker.com/win/stable/DockerToolbox.exe
 
-* **Install Minikube**
+2. **Install Minikube**
     * Download this [file](https://storage.googleapis.com/minikube/releases/latest/minikube-windows-amd64.exe) and rename it to minikube.exe
     * Place it in your Program Files directory under Minikube
     * Add the folder to your PATH by right clicking on the Windows icon in the lower left hand side, clicking System, then clicking on Advanced system settings in the left hand pane
@@ -160,17 +229,17 @@ Reference: [link](http://www.golangbootcamp.com/book/get_setup)
     * Add the following to the end: `;C:\Program Files\Minikube`
     * Now when you open a command prompt and type minikube it should run using the file in that directory
 
-* **Install Google SDK and KubeCtl**
+3. **Install Google SDK and KubeCtl**
 
     * Download and run the SDK from here: https://dl.google.com/dl/cloudsdk/channels/rapid/GoogleCloudSDKInstaller.exe
     * Uncheck all of the boxes and click finish
     * Restart your command prompt and then type: `gcloud components install kubectl`
 
-* **Install Virtualenv**
+4. **Install Virtualenv**
 
     https://virtualenv.pypa.io/en/stable/installation/
 
-* **Install the GO programming language**
+5. **Install the GO programming language**
 
     https://storage.googleapis.com/golang/go1.8.3.windows-amd64.msi
 
