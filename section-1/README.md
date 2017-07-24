@@ -117,7 +117,7 @@ Reference: [link](http://www.golangbootcamp.com/book/get_setup)
 ### Linux
 
 1.  **Install Google Cloud SDK**
-     * https://cloud.google.com/sdk/docs/quickstart-debian-ubuntu
+     * https://cloud.google.com/sdk/docs/quickstart-linux
      
 2.  **Install Docker**
      * https://www.docker.com/products/docker-toolbox
