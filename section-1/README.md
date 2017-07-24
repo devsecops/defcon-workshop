@@ -10,7 +10,8 @@
         - [Requirements](#requirements)
         - [Google Cloud Platform (GCP) account](#google-cloud-platform-gcp-account)
         - [MacOS](#macos)
-        - [Linux](#linux)
+        - [Linux - Ubuntu 16.04.2 LTS](#linux)
+        - [Linux - Kali](#linux-1)
         - [Windows](#windows)
     - [Building the first Docker image](#building-the-first-docker-image)
         - [Linux/Mac](#linuxmac)
@@ -116,16 +117,21 @@ Reference: [link](http://www.golangbootcamp.com/book/get_setup)
 
 ### Linux (Ubuntu 16.04.2 LTS)
 
+
+
+
+### Linux (Kali)
+
 1.  **Install Google Cloud SDK**
      * https://cloud.google.com/sdk/docs/quickstart-linux
-     
+
 2.  **Install Docker**
      * https://www.docker.com/products/docker-toolbox
      * if you're using Kali, use the install script [kali-install-docker.sh](./scripts/kali-install-docker.sh).
      * Unfortunately, this [script] only works for x64 Kali builds.
 3.  **Install Minikube**
      * https://github.com/kubernetes/minikube
-     
+
 4.  **Install Kubectl:**
      * Install kubectl via the GCLOUD SDK - `gcloud components install kubectl`
 
