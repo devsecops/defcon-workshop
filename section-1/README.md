@@ -117,7 +117,7 @@ Reference: [link](http://www.golangbootcamp.com/book/get_setup)
 ### Linux
 
 https://www.docker.com/products/docker-toolbox
-    * if you're using Kali, use the install script [kali-install-docker.sh](./kali-install-docker.sh).
+    * if you're using Kali, use the install script [kali-install-docker.sh](./scripts/kali-install-docker.sh).
     * Unfortunately, this [script] only works for x64 Kali builds.
 
 https://github.com/kubernetes/minikube
