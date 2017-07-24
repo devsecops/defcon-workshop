@@ -116,11 +116,18 @@ Reference: [link](http://www.golangbootcamp.com/book/get_setup)
 
 ### Linux
 
-https://www.docker.com/products/docker-toolbox
-    * if you're using Kali, use the install script [kali-install-docker.sh](./scripts/kali-install-docker.sh).
-    * Unfortunately, this [script] only works for x64 Kali builds.
-
-https://github.com/kubernetes/minikube
+1.  **Install Google Cloud SDK**
+     * https://cloud.google.com/sdk/docs/quickstart-debian-ubuntu
+     
+2.  **Install Docker**
+     * https://www.docker.com/products/docker-toolbox
+     * if you're using Kali, use the install script [kali-install-docker.sh](./scripts/kali-install-docker.sh).
+     * Unfortunately, this [script] only works for x64 Kali builds.
+3.  **Install Minikube**
+     * https://github.com/kubernetes/minikube
+     
+4.  **Install Kubectl:**
+     * Install kubectl via the GCLOUD SDK - `gcloud components install kubectl`
 
 
 ### Windows (not supported)
