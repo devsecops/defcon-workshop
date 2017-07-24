@@ -216,6 +216,10 @@ Reference: [link](https://github.com/kubernetes/minikube#linux-ci-installation-w
 
 8.  **Install GO programming language**
      * https://golang.org/doc/install?download=go1.8.3.linux-amd64.tar.gz
+     
+9.  **Initialize Google SDK**
+     * `gcloud init`
+     
 
 ### Windows (not supported)
 
