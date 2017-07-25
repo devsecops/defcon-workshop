@@ -198,7 +198,10 @@ Reference: [link](https://github.com/kubernetes/minikube#linux-ci-installation-w
 ### Linux (Kali)
 
 Download a pre-built OVF image from [here](https://drive.google.com/drive/folders/0B2Q5RDVHTruOXzhyZGQtWXNGSkE?usp=sharing)  and type gcloud init. Authenticate yourself. Choose your project and the set the region to us-west1 and zone to us-west1-a. After importing the OVF file, shut down the VM and ensure Enable Hypervisor applications option is checked as shown below:
+
 ![hyper.png](imgs/hyper.png)
+
+If you would rather manually go over the installation, please follow the steps below. These instructions will work on a current Kali image, be sure to run `sudo apt-get update -y && sudo apt-get upgrade -y` before you begin:
 
 1.  **Install Google Cloud SDK**
      * https://cloud.google.com/sdk/docs/quickstart-linux
