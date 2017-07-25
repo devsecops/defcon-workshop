@@ -118,7 +118,11 @@ Reference: [link](http://www.golangbootcamp.com/book/get_setup)
 
 ### Linux (Ubuntu 16.04.2 LTS)
 
-Download a pre-built OVF image from [link](https://drive.google.com/drive/folders/0Bx0v3qBphpBcVXlvdDdyNFNWTkU?usp=sharing) and type `gcloud init`. If you want to manually go over the installation, please follow below. These instructions will work on a bare metal Ubuntu 16.04.2 LTS:
+Download a pre-built OVF image from [link](https://drive.google.com/drive/folders/0Bx0v3qBphpBcVXlvdDdyNFNWTkU?usp=sharing) and type `gcloud init`. After importing the OVF file, shut down the VM and ensure `Enable Hypervisor applications` option is checked as shown below:
+
+![hyper.png](imgs/hyper.png)
+
+If you would rather manually go over the installation, please follow the steps below. These instructions will work on a bare metal Ubuntu 16.04.2 LTS.
 
 1.  **Install Git**
     * `sudo apt install -y git` and then `git clone https://github.com/devsecops/defcon-workshop.git`
