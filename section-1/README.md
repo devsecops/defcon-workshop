@@ -118,7 +118,7 @@ Reference: [link](http://www.golangbootcamp.com/book/get_setup)
 
 ### Linux (Ubuntu 16.04.2 LTS)
 
-Download a pre-built OVF image from [link](https://drive.google.com/drive/folders/0Bx0v3qBphpBcVXlvdDdyNFNWTkU?usp=sharing) and type `gcloud init`. After importing the OVF file, shut down the VM and ensure `Enable Hypervisor applications` option is checked as shown below:
+Download a pre-built OVF image from [link](https://drive.google.com/drive/folders/0Bx0v3qBphpBcVXlvdDdyNFNWTkU?usp=sharing) and type `gcloud init`. Authenticate yourself. Choose your project and the set the region to `us-west1` and zone to `us-west1-a`. After importing the OVF file, shut down the VM and ensure `Enable Hypervisor applications` option is checked as shown below:
 
 ![hyper.png](imgs/hyper.png)
 
@@ -192,7 +192,7 @@ Reference: [link](https://github.com/kubernetes/minikube#linux-ci-installation-w
     * Restart the shell
     * Type `go version`. It should say `go version go1.8.3 linux/amd64`
 
-9. Type `gcloud init` and authenticate yourself!
+9. Type `gcloud init` and authenticate yourself. Choose your project and the set the region to `us-west1` and zone to `us-west1-a`.
 
 
 ### Linux (Kali)
