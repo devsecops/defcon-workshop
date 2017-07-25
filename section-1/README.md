@@ -89,22 +89,34 @@ gsutil 4.27
 
     * Install kubectl via the GCLOUD SDK - `gcloud components install kubectl`
 
-6. **Install Virtualbox**
+6.1 **Install w/ Virtualbox**
 
     * Navigate to [Virtualbox](https://www.virtualbox.org/wiki/Downloads)
     * Download for `OS X hosts` - version 5.1.24
-    * Type `minikube start` and then `kubectl version`. It should look like below:
+    * Type `minikube start`.
+    
+    * Skip to 7.
+
+6.2 **Install w/ VMWare Fusion**
+
+    * Install [VMWare Fusion](https://www.vmware.com/products/fusion.html) and enter your license key.
+    * Type `minikube start --vm-driver=vmwarefusion`.
+    * Type `eval $(minikube docker-env)`
+    
+7. **Verify Kubectl**
+
+    * Type `kubectl version`. It should look like below:
 
 ![kubectl version](imgs/kubectl-version.png)
 
-7.  **Install Virtualenv**
+8.  **Install Virtualenv**
 
     * If you don't already have pip, type `sudo easy_install pip`
     * Install virtualenv by typing `sudo pip install virtualenv`
 
 Reference: [link](https://virtualenv.pypa.io/en/stable/installation/)
 
-8. **Install the GO programming language**
+9. **Install the GO programming language**
 
     * Install GOLANG with Homebrew by typing `brew install go --cross-compile-common`
     * go version should say `go version go1.8.3 darwin/amd64`
