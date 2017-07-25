@@ -7,18 +7,8 @@
     - [Table of Contents](#table-of-contents)
     - [Overview](#overview)
     - [Installation / Setting up](#installation--setting-up)
-        - [Requirements](#requirements)
-        - [Google Cloud Platform (GCP) account](#google-cloud-platform-gcp-account)
-        - [MacOS](#macos)
-        - [Linux - Ubuntu 16.04.2 LTS](#linux)
-        - [Linux - Kali](#linux-1)
-        - [Windows](#windows)
     - [Building the first Docker image](#building-the-first-docker-image)
-        - [Linux/Mac](#linuxmac)
-        - [Windows](#windows-1)
     - [Pushing the Docker image to Google Container Registry (GCR)](#pushing-the-docker-image-to-google-container-registry-gcr)
-        - [Linux/Mac](#linuxmac-1)
-        - [Windows](#windows-2)
     - [References](#references)
 
 <!-- /TOC -->
@@ -50,7 +40,7 @@ In this section, we will:
 * Go to `https://console.developers.google.com/apis` and enable `Compute Engine API`.
 
 
-### MacOS
+### Host OS - MacOS. Recommended Setup. We will walk through this setup during the workshop. Tested!
 
 1. **Please install Homebrew if you don't already have it**
 
@@ -93,16 +83,17 @@ gsutil 4.27
 
     * Navigate to [Virtualbox](https://www.virtualbox.org/wiki/Downloads)
     * Download for `OS X hosts` - version 5.1.24
-    * Type `minikube start`.
-    
-    * Skip to 7.
+    * Type `minikube start`. This uses `VirtualBox` by default.
+    * Type `eval $(minikube docker-env)`
+    * Skip to Step 7.
 
 6.2 **Install w/ VMWare Fusion**
 
     * Install [VMWare Fusion](https://www.vmware.com/products/fusion.html) and enter your license key.
     * Type `minikube start --vm-driver=vmwarefusion`.
     * Type `eval $(minikube docker-env)`
-    
+    * Go to Step 7.
+
 7. **Verify Kubectl**
 
     * Type `kubectl version`. It should look like below:
@@ -128,13 +119,15 @@ Reference: [link](https://virtualenv.pypa.io/en/stable/installation/)
 Reference: [link](http://www.golangbootcamp.com/book/get_setup)
 
 
-### Linux (Ubuntu 16.04.2 LTS)
+### Host OS - can be anything. Guest OS - Linux (Ubuntu Desktop 16.04.2 LTS) on VMWare Fusion. 2nd recommended option. Tested as well!
 
 Download a pre-built OVF image from [link](https://drive.google.com/drive/folders/0Bx0v3qBphpBcVXlvdDdyNFNWTkU?usp=sharing) and type `gcloud init`. Authenticate yourself. Choose your project and the set the region to `us-west1` and zone to `us-west1-a`. After importing the OVF file, shut down the VM and ensure `Enable Hypervisor applications` option is checked as shown below:
 
 ![hyper.png](imgs/hyper.png)
 
-If you would rather manually go over the installation, please follow the steps below. These instructions will work on a bare metal Ubuntu 16.04.2 LTS.
+Start the VM again.
+
+Instead of using a pre-built VM, if you would rather manually go over the installation steps to have a better understanding of all the software/packages being installed, please start with a fresh install of Ubuntu Desktop 16.04 in VMWare Fusion. Then, follow the steps below:
 
 1.  **Install Git**
     * `sudo apt install -y git` and then `git clone https://github.com/devsecops/defcon-workshop.git`
@@ -207,20 +200,25 @@ Reference: [link](https://github.com/kubernetes/minikube#linux-ci-installation-w
 9. Type `gcloud init` and authenticate yourself. Choose your project and the set the region to `us-west1` and zone to `us-west1-a`.
 
 
-### Linux (Kali)
+### Host OS - can be anything. Guest OS - Linux (x64 Kali) on VMWare Fusion.
 
 Download a pre-built OVF image from [here](https://drive.google.com/drive/folders/0B2Q5RDVHTruOXzhyZGQtWXNGSkE?usp=sharing)  and type `gcloud init`. Authenticate yourself. Choose your project and the set the region to `us-west1` and zone to `us-west1-a`. After importing the OVF file, shut down the VM and ensure Enable Hypervisor applications option is checked as shown below:
 
 ![hyper.png](imgs/hyper.png)
 
-If you would rather manually go over the installation, please follow the steps below. These instructions will work on a current Kali image, be sure to run `sudo apt-get update -y && sudo apt-get upgrade -y` before you begin:
+Start the VM again.
 
-1.  **Install Google Cloud SDK**
+Instead of using a pre-built VM, if you would rather manually go over the installation steps to have a better understanding of all the software/packages being installed, please start with a fresh install of the latest x64 Kali Linux in VMWare Fusion. Then, follow the steps below:
+
+1.1 Be sure to run `sudo apt-get update -y && sudo apt-get upgrade -y` before you begin:
+
+1.2  **Install Google Cloud SDK**
      * https://cloud.google.com/sdk/docs/quickstart-linux
 
 2.  **Install Docker**
      * Use this install script [kali-install-docker.sh](./scripts/kali-install-docker.sh).
      * Unfortunately, this [script] only works for x64 Kali builds.
+
 3.  **Install Minikube**
      * https://github.com/kubernetes/minikube
 
