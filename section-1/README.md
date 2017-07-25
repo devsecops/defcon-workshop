@@ -158,7 +158,7 @@ Reference: [link](https://docs.docker.com/engine/installation/linux/docker-ce/ub
     * `sudo pip install virtualenv`
 
 7. **Install Minikube and Kubectl**
-    * `curl -Lo minikube https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64 && chmod +x minikube`
+    * `curl -Lo minikube https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64 && chmod +x minikube && sudo mv minikube /usr/local/bin/`
     * `curl -Lo kubectl https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl && chmod +x kubectl`
 
     * `mkdir $HOME/.kube || true`
@@ -216,10 +216,10 @@ Reference: [link](https://github.com/kubernetes/minikube#linux-ci-installation-w
 
 8.  **Install GO programming language**
      * https://golang.org/doc/install?download=go1.8.3.linux-amd64.tar.gz
-     
+
 9.  **Initialize Google SDK**
      * `gcloud init`
-     
+
 
 ### Windows (not supported)
 
@@ -254,7 +254,7 @@ Note: If any of the tools above don’t seem like they’re working in a command
 
 ## Building the first Docker image
 * Open a shell/command prompt and clone this repository with the following command:
-    * `git clone https://github.com/devsecops/defcon-workshop.git`
+    * `git clone https://github.com/devsecops/defcon-workshop.git` - If this already exists, please remove it and clone it again. It is possible the codebase has changed.
 *  Change into the section-1 directory of the defcon-workshop repo
 
 ### Linux/Mac

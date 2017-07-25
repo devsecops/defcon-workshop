@@ -49,9 +49,9 @@ Reference: [link](https://www.redhat.com/en/containers/what-is-kubernetes)
 
 ## Deploying a K8S cluster locally on minikube
 
-1. `minikube status` and ensure its running. If not, type `minikube start`.
-2. `eval $(minikube docker-env)`
-3. `docker ps -a` - Verify you are inside minikube's docker environment
+1. `cd` into `section-2` directory. Type `minikube status` and ensure its running. If not, type `minikube start`.
+2. On MacOS only - `eval $(minikube docker-env)`
+3. `docker ps -a` - Verify you are inside the correct Docker environment. You should see some `gcr.io/google_containers/...` type containers running.
 4. `kubectl apply -f local-deployment.yaml` - Deploys the local K8S cluster on Minikube
 5. `minikube dashboard` - Dashboard to view the deployment
 6. `kubectl get deployments --namespace=local-server` - Retrieve all the deployments in the namespace
