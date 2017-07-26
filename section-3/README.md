@@ -36,18 +36,19 @@ Type `kubectl get nodes` and make sure it says `minikube` to confirm if the cont
 
 ## Running NMAP on the local K8S cluster
 
-* `cd` into `section-3` directory and type `kubectl apply -f deployments/nmap-deployment.yaml`
-* Navigate to the minikube dashboard and notice that we just ran nmap against google. Check the deployment logs!
+1. `cd` into `section-3` directory and type `kubectl apply -f deployments/nmap-deployment.yaml`
+2. Navigate to the minikube dashboard and notice that we just ran nmap against google. Check the deployment logs!
 
-    NOTE: If you notice in the logs that `google.com` could not be resolved, it likely means DNS is messed up in your Minikube cluster. In order to hot fix this:
-        * Type `docker ps -a` and observe all the running containers.
-        * Find out the container ID of the container that says `Kube DNS`.
-        * Then, type `docker exec -it <containerID> /bin/sh`.
-        * `vi /etc/resolv.conf` and remove the `nameserver` entry. Add `nameserver 8.8.8.8` instead.
-        * Save the file and give it some time for the nameserver change to kick in.
-        * Try the deployment again in a few minutes and google.com should hopefully start to resolve again.
+NOTE: If you notice in the logs that `google.com` could not be resolved, it likely means DNS is messed up in your Minikube cluster. In order to hot fix this:
 
-* Delete the deployment by typing - `kubectl delete deployments --all`
+* Type `docker ps -a` and observe all the running containers.
+* Find out the container ID of the container that says `Kube DNS`.
+* Then, type `docker exec -it <containerID> /bin/sh`.
+* `vi /etc/resolv.conf` and remove the `nameserver` entry. Add `nameserver 8.8.8.8` instead.
+* Save the file and give it some time for the nameserver change to kick in.
+* Try the deployment again in a few minutes and google.com should hopefully start to resolve again.
+
+3. Delete the deployment by typing - `kubectl delete deployments --all`
 
 ## Google PubSub in action
 Before we could go ahead with this section, we need to make sure we have the correct environment setup. In your GCP cloud console, navigate to `IAM & Admin` -> `Service Accounts`. Create a key for the default Compute Engine Service Account and download the JSON key. Set an environment variable `GOOGLE_APPLICATION_CREDENTIALS` with the value being the location where you save the JSON key.
