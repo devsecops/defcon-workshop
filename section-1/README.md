@@ -200,7 +200,7 @@ Reference: [link](https://github.com/kubernetes/minikube#linux-ci-installation-w
 9. Type `gcloud init` and authenticate yourself. Choose your project and the set the region to `us-west1` and zone to `us-west1-a`.
 
 
-### Host OS - can be anything. Guest OS - Linux (x64 Kali) on VMWare Fusion.
+### Host OS - can be anything. Guest OS - Linux (x64 Kali) on VMWare Fusion. (not supported)
 
 Download a pre-built OVF image from [here](https://drive.google.com/drive/folders/0B2Q5RDVHTruOXzhyZGQtWXNGSkE?usp=sharing)  and type `gcloud init`. Authenticate yourself. Choose your project and the set the region to `us-west1` and zone to `us-west1-a`. After importing the OVF file, shut down the VM and ensure Enable Hypervisor applications option is checked as shown below:
 
