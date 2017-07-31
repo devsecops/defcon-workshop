@@ -31,8 +31,7 @@ In this section, we will:
 4. Minikube
 5. kubectl
 6. VirtualBox
-7. Virtualenv
-8. GoLang
+7. GoLang
 
 
 ### Google Cloud Platform (GCP) account
@@ -107,14 +106,7 @@ Client Version: version.Info{Major:"1", Minor:"7", GitVersion:"v1.7.0", GitCommi
 Server Version: version.Info{Major:"1", Minor:"7", GitVersion:"v1.7.0", GitCommit:"d3ada0119e776222f11ec7945e6d860061339aad", GitTreeState:"clean", BuildDate:"2017-07-26T00:12:31Z", GoVersion:"go1.8.3", Compiler:"gc", Platform:"linux/amd64"}
 ```
 
-8.  **Install Virtualenv**
-
-    * If you don't already have pip, type `sudo easy_install pip`
-    * Install virtualenv by typing `sudo pip install virtualenv`
-
-Reference: [link](https://virtualenv.pypa.io/en/stable/installation/)
-
-9. **Install the GO programming language**
+8. **Install the GO programming language**
 
     * Install GOLANG with Homebrew by typing `brew install go --cross-compile-common`
     * go version should say `go version go1.8.3 darwin/amd64`
@@ -175,11 +167,7 @@ gsutil 4.27
     * Navigate to [Virtualbox](https://www.virtualbox.org/wiki/Downloads)
     * Download for `Linux hosts` - Ubuntu 16.04
 
-6.  **Install Virtualenv**
-    * `sudo apt install python-pip`
-    * `sudo pip install virtualenv`
-
-7. **Install Minikube and Kubectl**
+6. **Install Minikube and Kubectl**
     * `curl -Lo minikube https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64 && chmod +x minikube && sudo mv minikube /usr/local/bin/`
     * `curl -Lo kubectl https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl && chmod +x kubectl`
     * `mkdir $HOME/.kube || true`
@@ -201,7 +189,7 @@ Server Version: version.Info{Major:"1", Minor:"7", GitVersion:"v1.7.0", GitCommi
 
 Reference: [link](https://github.com/kubernetes/minikube#linux-ci-installation-which-supports-running-in-a-vm-example-w-kubectl-installation)
 
-8.  **Install GO programming language**
+7.  **Install GO programming language**
     * Download from `https://golang.org/doc/install?download=go1.8.3.linux-amd64.tar.gz`
     * `sudo tar -C /usr/local -xzf go1.8.3.linux-amd64.tar.gz`
     * `mkdir $HOME/go`
@@ -212,7 +200,7 @@ Reference: [link](https://github.com/kubernetes/minikube#linux-ci-installation-w
     * Restart the shell
     * Type `go version`. It should say `go version go1.8.3 linux/amd64`
 
-9. Type `gcloud init` and authenticate yourself. Choose your project and the set the region to `us-west1` and zone to `us-west1-a`.
+8. Type `gcloud init` and authenticate yourself. Choose your project and the set the region to `us-west1` and zone to `us-west1-a`.
 
 
 ### Host OS - can be anything. Guest OS - Linux (x64 Kali) on VMWare Fusion. (not supported)
@@ -243,16 +231,13 @@ Instead of using a pre-built VM, if you would rather manually go over the instal
 5.  **Install Pip**
      * `sudo apt-get install python-pip`
 
-6.  **Install Virtualenv**
-     * `sudo pip install virtualenv`
-
-7.  **Install VirtualBox**
+6.  **Install VirtualBox**
      * `sudo apt-get install virtualbox`
 
-8.  **Install GO programming language**
+7.  **Install GO programming language**
      * https://golang.org/doc/install?download=go1.8.3.linux-amd64.tar.gz
 
-9.  **Initialize Google SDK**
+8.  **Initialize Google SDK**
      * `gcloud init`
 
 
@@ -276,11 +261,7 @@ Instead of using a pre-built VM, if you would rather manually go over the instal
     * Uncheck all of the boxes and click finish
     * Restart your command prompt and then type: `gcloud components install kubectl`
 
-4. **Install Virtualenv**
-
-    https://virtualenv.pypa.io/en/stable/installation/
-
-5. **Install the GO programming language**
+4. **Install the GO programming language**
 
     https://storage.googleapis.com/golang/go1.8.3.windows-amd64.msi
 

@@ -9,7 +9,6 @@
     - [Overview](#overview)
     - [Switching back context to Minikube](#switching-back-context-to-minikube)
     - [Running NMAP on the local K8S cluster](#running-nmap-on-the-local-k8s-cluster)
-    - [Google PubSub in action](#google-pubsub-in-action)
     - [Convert NMAP data into BigQuery ingest-able format using a Data Converter](#convert-nmap-data-into-bigquery-ingest-able-format-using-a-data-converter)
     - [Querying BigQuery](#querying-bigquery)
     - [Running Cronjobs](#running-cronjobs)
@@ -50,21 +49,6 @@ NOTE: If you notice in the logs that `google.com` could not be resolved, it like
 
 3. Delete the deployment by typing - `kubectl delete deployments --all`
 
-## Google PubSub in action
-Before we could go ahead with this section, we need to make sure we have the correct environment setup. In your GCP cloud console, navigate to `IAM & Admin` -> `Service Accounts`. Create a key for the default Compute Engine Service Account and download the JSON key. Set an environment variable `GOOGLE_APPLICATION_CREDENTIALS` with the value being the location where you save the JSON key.
-
-Reference: [link](https://developers.google.com/identity/protocols/application-default-credentials)
-
-1. `virtualenv env`
-2. `. env/bin/activate`
-3. `pip install --upgrade google-cloud-pubsub`
-4. `gcloud config list` - Verify your account, project and active configuration are correctly setup
-5. `python scripts/createtopicandsub.py` - Creating the topic and subscription. Verify that the topic and subscription were created by navigating to the GCP Cloud console and then `Pub/Sub`.
-6. `python scripts/sendtotopic.py` - Sending the message to the topic
-7. `python scripts/listenfromsub.py` - Listening for that message from the subscription
-8. `python scripts/deletetopicandsub.py` - Deleting the topic and subscription
-
-Reference: [link](https://cloud.google.com/pubsub/docs/reference/libraries#client-libraries-install-python)
 
 ## Convert NMAP data into BigQuery ingest-able format using a Data Converter
 
