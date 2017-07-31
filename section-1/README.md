@@ -37,7 +37,7 @@ In this section, we will:
 * You can use the GCP Free Tier to get one
     https://cloud.google.com/free/
 
-* Go to `https://console.developers.google.com/apis` and enable `Compute Engine API`.
+* Go to `https://console.developers.google.com/apis` and enable `Compute Engine API`. Also, the `Container Registry API`.
 
 
 ### Host OS - MacOS. Recommended Setup. We will walk through this setup during the workshop. Tested!
@@ -63,9 +63,9 @@ In this section, we will:
     * Type `gcloud version` and this is what it should look like:
 
 ```
-Google Cloud SDK 163.0.0
+Google Cloud SDK 164.0.0
 bq 2.0.24
-core 2017.07.17
+core 2017.07.25
 gcloud
 gsutil 4.27
 ```
@@ -73,7 +73,7 @@ gsutil 4.27
 4. **Install Minikube:**
 
     * Type `brew cask install minikube`
-    * Type `minikube version` and it should say `minikube version: v0.20.0`
+    * Type `minikube version` and it should say `minikube version: v0.21.0`
 
 5. **Install Kubectl:**
 
@@ -82,23 +82,28 @@ gsutil 4.27
 6.1 **Install w/ Virtualbox**
 
    * Navigate to [Virtualbox](https://www.virtualbox.org/wiki/Downloads)
-   * Download for `OS X hosts` - version 5.1.24
+   * Download for `OS X hosts` - version 5.1.26
    * Type `minikube start`. This uses `VirtualBox` by default.
-   * Type `eval $(minikube docker-env)`
+   * Type `eval $(minikube docker-env)`.
+   * Type `docker ps -a` and ensure you see some containers like `gcr.io/google_containers/..` running.
    * Skip to Step 7.
 
 6.2 **Install w/ VMWare Fusion**
 
    * Install [VMWare Fusion](https://www.vmware.com/products/fusion.html) and enter your license key.
    * Type `minikube start --vm-driver=vmwarefusion`.
-   * Type `eval $(minikube docker-env)`
+   * Type `eval $(minikube docker-env)`.
+   * Type `docker ps -a` and ensure you see some containers like `gcr.io/google_containers/..` running.
    * Go to Step 7.
 
 7. **Verify Kubectl**
 
     * Type `kubectl version`. It should look like below:
 
-![kubectl version](imgs/kubectl-version.png)
+```
+Client Version: version.Info{Major:"1", Minor:"7", GitVersion:"v1.7.0", GitCommit:"d3ada0119e776222f11ec7945e6d860061339aad", GitTreeState:"clean", BuildDate:"2017-06-29T23:15:59Z", GoVersion:"go1.8.3", Compiler:"gc", Platform:"darwin/amd64"}
+Server Version: version.Info{Major:"1", Minor:"7", GitVersion:"v1.7.0", GitCommit:"d3ada0119e776222f11ec7945e6d860061339aad", GitTreeState:"clean", BuildDate:"2017-07-26T00:12:31Z", GoVersion:"go1.8.3", Compiler:"gc", Platform:"linux/amd64"}
+```
 
 8.  **Install Virtualenv**
 
@@ -127,7 +132,7 @@ Download a pre-built OVF image from [link](https://drive.google.com/drive/folder
 
 Start the VM again.
 
-Instead of using a pre-built VM, if you would rather manually go over the installation steps to have a better understanding of all the software/packages being installed, please start with a fresh install of Ubuntu Desktop 16.04 in VMWare Fusion. Then, follow the steps below:
+Instead of using a pre-built VM, if you would rather manually go over the installation steps to have a better understanding of all the software/packages being installed, please start with a fresh install of Ubuntu Desktop 16.04 in VMWare Fusion. Then, follow the steps below. **PS - The below instructions can also be used for the installation on a `Ubuntu Desktop 16.04.2 LTS` Host OS.**:
 
 1.  **Install Git**
     * `sudo apt install -y git` and then `git clone https://github.com/devsecops/defcon-workshop.git`
@@ -156,7 +161,13 @@ Reference: [link](https://docs.docker.com/engine/installation/linux/docker-ce/ub
     * Download `https://cloud.google.com/sdk/docs/quickstart-linux`, extract it and run `install.sh`
     * Start a new shell and type `gcloud version`. The output should look like below:
 
-![gcloudlinux](imgs/gcloudlinux.png)
+```
+Google Cloud SDK 164.0.0
+bq 2.0.24
+core 2017.07.25
+gcloud
+gsutil 4.27
+```
 
 5. **Install VirtualBox**
     * Navigate to [Virtualbox](https://www.virtualbox.org/wiki/Downloads)
@@ -169,7 +180,6 @@ Reference: [link](https://docs.docker.com/engine/installation/linux/docker-ce/ub
 7. **Install Minikube and Kubectl**
     * `curl -Lo minikube https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64 && chmod +x minikube && sudo mv minikube /usr/local/bin/`
     * `curl -Lo kubectl https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl && chmod +x kubectl`
-
     * `mkdir $HOME/.kube || true`
     * `touch $HOME/.kube/config`
     * Open .bashrc and type:
@@ -178,11 +188,14 @@ Reference: [link](https://docs.docker.com/engine/installation/linux/docker-ce/ub
         * `export MINIKUBE_HOME=$HOME`
         * `export CHANGE_MINIKUBE_NONE_USER=true`
         * `export KUBECONFIG=$HOME/.kube/config`
-    * `sudo -E ./minikube start --vm-driver=none --use-vendored-driver`
+    * If you're installing on a Guest OS, type `sudo -E ./minikube start --vm-driver=none --use-vendored-driver`. Otherwise, type `sudo -E ./minikube start`
     * `gcloud components install kubectl`
     * `kubectl version`. It should look like below:
 
-![kubectllinux](imgs/kubectllinux.png)
+```
+Client Version: version.Info{Major:"1", Minor:"7", GitVersion:"v1.7.0", GitCommit:"d3ada0119e776222f11ec7945e6d860061339aad", GitTreeState:"clean", BuildDate:"2017-06-29T23:15:59Z", GoVersion:"go1.8.3", Compiler:"gc", Platform:"darwin/amd64"}
+Server Version: version.Info{Major:"1", Minor:"7", GitVersion:"v1.7.0", GitCommit:"d3ada0119e776222f11ec7945e6d860061339aad", GitTreeState:"clean", BuildDate:"2017-07-26T00:12:31Z", GoVersion:"go1.8.3", Compiler:"gc", Platform:"linux/amd64"}
+```
 
 Reference: [link](https://github.com/kubernetes/minikube#linux-ci-installation-which-supports-running-in-a-vm-example-w-kubectl-installation)
 
