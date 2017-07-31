@@ -7,6 +7,7 @@
     - [Table of Contents](#table-of-contents)
     - [Overview](#overview)
     - [Installation / Setting up](#installation--setting-up)
+    - [Docker Overview](#docker-overview)
     - [Building the first Docker image](#building-the-first-docker-image)
     - [Pushing the Docker image to Google Container Registry (GCR)](#pushing-the-docker-image-to-google-container-registry-gcr)
     - [References](#references)
@@ -17,8 +18,9 @@
 ## Overview
 In this section, we will:
 1. Install and set up our environment for the workshop.
-2. Build our first Docker image.
-3. Push our Docker image to Google Container Registry (GCR).
+2. Briefly go over Docker.
+3. Build our first Docker image.
+4. Push our Docker image to Google Container Registry (GCR).
 
 
 ## Installation / Setting up
@@ -283,6 +285,10 @@ Instead of using a pre-built VM, if you would rather manually go over the instal
     https://storage.googleapis.com/golang/go1.8.3.windows-amd64.msi
 
 Note: If any of the tools above don’t seem like they’re working in a command prompt after installation, try closing your prompt and opening a new one.  The tool should then work.
+
+
+## Docker Overview
+![docker.png](imgs/docker.png)
 
 
 ## Building the first Docker image
