@@ -81,18 +81,18 @@ gsutil 4.27
 
 6.1 **Install w/ Virtualbox**
 
-    * Navigate to [Virtualbox](https://www.virtualbox.org/wiki/Downloads)
-    * Download for `OS X hosts` - version 5.1.24
-    * Type `minikube start`. This uses `VirtualBox` by default.
-    * Type `eval $(minikube docker-env)`
-    * Skip to Step 7.
+   * Navigate to [Virtualbox](https://www.virtualbox.org/wiki/Downloads)
+   * Download for `OS X hosts` - version 5.1.24
+   * Type `minikube start`. This uses `VirtualBox` by default.
+   * Type `eval $(minikube docker-env)`
+   * Skip to Step 7.
 
 6.2 **Install w/ VMWare Fusion**
 
-    * Install [VMWare Fusion](https://www.vmware.com/products/fusion.html) and enter your license key.
-    * Type `minikube start --vm-driver=vmwarefusion`.
-    * Type `eval $(minikube docker-env)`
-    * Go to Step 7.
+   * Install [VMWare Fusion](https://www.vmware.com/products/fusion.html) and enter your license key.
+   * Type `minikube start --vm-driver=vmwarefusion`.
+   * Type `eval $(minikube docker-env)`
+   * Go to Step 7.
 
 7. **Verify Kubectl**
 
