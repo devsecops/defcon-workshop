@@ -52,7 +52,7 @@ NOTE: If you notice in the logs that `google.com` could not be resolved, it like
 
 ## Convert NMAP data into BigQuery ingest-able format using a Data Converter
 
-### Running Locally
+### Running Locally outside the K8S cluster
 1. Create a BigQuery dataset `nmapds` and an empty table `nmap` in Google BigQuery from the GCP UI to store the processed nmap results with the following schema (all nullable):
 ```
 ip:string
@@ -64,10 +64,10 @@ version:string
 ```
 2. Install `NMAP` if you don't already have it and run NMAP with the following command - `nmap -Pn -p 1-1000 -oN google_results.nmap google.com`.
 3. `cd` into the `data-converter` directory. Complete the `.env.sample` file with the appropriate `PROJECT_ID` and copy it to `.env` in the same directory.
-4. In that folder, type `go get cloud.google.com/go/bigquery` and then `go get github.com/subosito/gotenv` and finally `go run dataconvert.go ../google_results.nmap` - This command basically converts the nmap output into a BigQuery ingest-able format (csv) and uploads the data into the `nmap` table of the `nmapds` dataset.
+4. In that folder, type `go get -u cloud.google.com/go/bigquery` and then `go get -u github.com/subosito/gotenv` and finally `go run dataconvert.go ../google_results.nmap` - This command basically converts the nmap output into a BigQuery ingest-able format (csv) and uploads the data into the `nmap` table of the `nmapds` dataset.
 5. Verify that the data was successfully uploaded to BigQuery by navigating to GCP Cloud console -> BigQuery -> `nmap` table.
 
-### Running on a local K8S cluster (Minikube)
+### Running locally inside the K8S cluster (Minikube)
 1. `kubectl create secret generic googlesecret --from-file=$(CREDS_FILEPATH)` - Create a secret with the value of the secret being the JSON credentials file downloaded above. We need this because the containers on the cluster need to authenticate to our K8S cluster to be able to create anything.
 2. `kubectl get secrets` - Verify the secret was created.
 3. `cd` back into the `section-3` directory.
@@ -101,6 +101,4 @@ GROUP BY ip, port
 ## Cleanup
 1. `kubectl delete cronjobs --all`
 2. `kubectl delete pods --all`
-3. `kubectl delete jobs --all`
-4. `bq rm nmapds.nmap` and `bq rm -r -f nmapds` - Delete the BigQuery dataset `nmapds` and table `nmap`
-5. `deactivate` to come out of the virtualenv
+3. `bq rm nmapds.nmap` and `bq rm -r -f nmapds` - Delete the BigQuery dataset `nmapds` and table `nmap`
