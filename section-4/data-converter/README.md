@@ -31,18 +31,18 @@ Secret:string
 
 3. Run `git-all-secrets` by typing `docker run -it abhartiya/tools_gitallsecrets:v3 -token <git-personal-access-token> -org kubebot -toolName repo-supervisor`. Make sure you replace the `git-personal-access-token` with the appropriate value.
 
-4. Copy the `/data/results.txt` from the container to `results.json`. To do that, first find the container ID by typing `docker ps -a`.  Then to copy the file, type `docker cp contID:/data/results.txt results.json`.
+4. Find the container ID by typing `docker ps -a`. Copy the `/data/results.txt` from the container to `results.json` by typing `docker cp contID:/data/results.txt results.json`.
 
-4. Run `WFUZZ` by typing `docker run -it abhartiya/tools_wfuzz -w /data/SecLists/Discovery/Web_Content/tomcat.txt --hc 404,429,400 -o csv http://104.198.4.57/FUZZ /data/out.csv`.
+5. Run `WFUZZ` by typing `docker run -it abhartiya/tools_wfuzz -w /data/SecLists/Discovery/Web_Content/tomcat.txt --hc 404,429,400 -o csv http://104.198.4.57/FUZZ /data/out.csv`.
 
-5. Copy the `/data/out.csv` from the container to `out.csv`. To do that, first find the container ID by typing `docker ps -a`.  Then to copy the file, type `docker cp contID:/data/out.csv out.csv`.
+6. Find the container ID by typing `docker ps -a`. Copy the `/data/out.csv` from the container to `out.csv` by typing `docker cp contID:/data/out.csv out.csv`.
 
-6. Complete the `.env.sample` file in the `data-converter` directory with the appropriate values and copy it to `.env`.
+7. Complete the `.env.sample` file in the `data-converter` directory with the appropriate values and copy it to `.env`.
 
-7. Download the `flatmap` library for the data converter by typing `go get github.com/astaxie/flatmap`.
+8. Download the `flatmap` library for the data converter by typing `go get -u github.com/astaxie/flatmap`.
 
-8. Now, in order to convert git-all-secret's output and upload it to BQ, type `go run dataconvert.go -toolName repo-supervisor -filePath results.json`.
+9. Now, in order to convert git-all-secret's output and upload it to BQ, type `go run dataconvert.go -toolName repo-supervisor -filePath results.json`.
 
-9. Next, in order to convert WFUZZ's output and upload it to BQ, type `go run dataconvert.go -toolName wfuzz -filePath out.csv`.
+10. Next, in order to convert WFUZZ's output and upload it to BQ, type `go run dataconvert.go -toolName wfuzz -filePath out.csv`.
 
-10. Ensure that the `reposupervisor_test` and `wfuzz_tomcat_test` BQ tables were updated.
+11. Ensure that the `reposupervisor_test` and `wfuzz_tomcat_test` BQ tables were updated.

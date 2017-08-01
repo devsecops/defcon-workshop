@@ -66,11 +66,11 @@ In this section, we will
 5. If there is a match, we will get back results in Slack via an incoming webhook.
 6. Demo of doing all this auto-magically.
 
-### Running locally
+### Running locally outside the K8S cluster
 1. [Running git-all-secrets and wfuzz locally and converting the results to store in BigQuery](data-converter/README.md)
 2. [Running wfuzz basic authentication bruteforcer combining the data from both the tools](wfuzz-basicauth-bruteforcer/README.md)
 
-### Running on a local K8S cluster (Minikube)
+### Running locally inside the K8S cluster (Minikube)
 Running the tools repo-supervisor and wfuzz
 1. Replace the directory path `/path/where/gac/is/stored/` in the command below to the path where GAC credentials file is stored locally on your workstation. Replace the `PROJECTID` as well. Replace the `gacfilename` with the name of the GAC credentials file.
 
@@ -81,11 +81,11 @@ The above command will mount the local directory where you stored your GAC crede
 2. `kubectl get secrets` - Verify the secret `googlesecret` created earlier still exists.
 3. `cd` back into the `section-4` directory.
 4. Make sure the environment values in the `deployments/tools-bq-pod.yaml` deployment file are accurate.
-5. Start the pods by typing `kubectl apply -f deployments/tools-bq-pod.yaml`.
+5. Start the pods by typing `kubectl apply -f deployments/tools-bq-pod.yaml`. This will start the two tools and convert the output of those tools and upload it to Google BigQuery. You can verify this by looking at the BQ tables. Proceed to the next section only after this finishes.
 
 Running the wfuzz basic authN bruteforcer
 1. Make sure the environment values in the `deployments/tools-wfbrute-pod.yaml` deployment file are accurate.
-2. Start the pod by typing `kubectl apply -f deployments/tools-wfbrute-pod.yaml`
+2. Start the pod by typing `kubectl apply -f deployments/tools-wfbrute-pod.yaml`. This will download the data from the BQ tables of both the tools and for each wfuzz endpoint discovered, it will try to bruteforce the admin password with all the secrets obtained from git-all-secrets. There should be output in Slack if this is successful.
 
 ### Cleanup
 1. `kubectl delete pods --all`
