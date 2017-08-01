@@ -10,7 +10,6 @@
     - [Stand up Attack Host with exploit tools](#stand-up-attack-host-with-exploit-tools)
     - [Using Attack Host to exploit](#using-attack-host-to-exploit)
     - [Destroying the environment](#destroying-the-environment)
-    - [Switching context to minikube](#switching-context-to-minikube)
     - [Introducing Target, Attack Surface and Automated Testing Methodology](#introducing-target-attack-surface-and-automated-testing-methodology)
 
 <!-- /TOC -->
