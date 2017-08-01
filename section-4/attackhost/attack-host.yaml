@@ -11,6 +11,7 @@ spec:
     spec:
       containers:
       - name: attackhost
-        image: us.gcr.io/<PROJECT_ID>/attackhost
+        image: attackhost
+        imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 80

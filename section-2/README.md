@@ -73,5 +73,7 @@ Reference: [link](https://www.redhat.com/en/containers/what-is-kubernetes)
 7. `kubectl delete deployments --namespace=remote-server --all` - Deletes the remote deployments in the namespace
 8. `kubectl delete namespace remote-server` - Deletes the namespace
 9. You can kill the `kubectl proxy` as well now.
+10. Finally, delete the remote K8S cluster on GKE - `gcloud alpha container clusters delete remote-cluster`.
+11. Remove all the images from GCR.
 
 Reference: [link](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/)
